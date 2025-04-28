@@ -32,7 +32,7 @@
                 android:paddingEnd="5dp"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="Translations go here"/>
 
@@ -53,20 +53,22 @@
             android:orientation="horizontal"
 
             >
-            <Button
-                android:id="@+id/signOutBtn"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSignOut"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/background_button_border"
                 android:text="Sign Out"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonHome"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/background_button_border"
                 android:text="Home"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonHelp"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/background_button_border"
