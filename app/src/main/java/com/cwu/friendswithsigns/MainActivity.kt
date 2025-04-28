@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var video_binding: ActivityVideoBinding
     private lateinit var help_binding: ActivityHelpBinding
     private lateinit var auth: FirebaseAuth
+    private val user_db = UserDatabase()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
