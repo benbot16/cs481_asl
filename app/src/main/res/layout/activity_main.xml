@@ -31,6 +31,7 @@
             android:layout_marginTop="10dp"
             android:text="Insert App Description Here"
             android:textSize="30sp"
+            android:textColor="@color/black"
             android:gravity="center"/>
 
         <TextView
@@ -41,6 +42,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:text="Getting Started:"
+            android:textColor="@color/black"
             android:textSize="30sp"/>
 
         <com.google.android.material.button.MaterialButton
