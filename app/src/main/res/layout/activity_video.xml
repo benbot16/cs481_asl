@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/videoScreen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/videoViewPager"
@@ -13,9 +14,8 @@
         android:layout_height="match_parent"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -51,27 +51,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-
+            android:background="#D3E4FA"
+            android:gravity="center"
             >
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonSignOut"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_button_border"
+                android:padding="15dp"
+                android:backgroundTint="#6E91BA"
                 android:text="Sign Out"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonHome"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_button_border"
+                android:padding="15dp"
+                android:backgroundTint="#6E91BA"
                 android:text="Home"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonHelp"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_button_border"
+                android:padding="15dp"
+                android:backgroundTint="#6E91BA"
                 android:text="Help"/>
 
         </LinearLayout>
