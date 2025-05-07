@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/user"
+        android:enabled="true"
+        android:title="@string/user"
+        android:icon="@drawable/ic_star"/>
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:title="@string/home"
+        android:icon="@drawable/ic_star"/>
+    <item
+        android:id="@+id/scan"
+        android:enabled="true"
+        android:title="@string/scan"
+        android:icon="@drawable/ic_microphone"/>
+</menu>

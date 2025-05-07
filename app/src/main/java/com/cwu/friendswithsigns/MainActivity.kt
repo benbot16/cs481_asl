@@ -3,6 +3,7 @@ package com.cwu.friendswithsigns
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.navigation.fragment.NavHostFragment
 import com.cwu.friendswithsigns.databinding.ActivityHelpBinding
 import com.cwu.friendswithsigns.databinding.ActivityMainBinding
 import com.cwu.friendswithsigns.databinding.ActivitySignInBinding
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var video_binding: ActivityVideoBinding
     private lateinit var help_binding: ActivityHelpBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var navHostFragment: NavHostFragment
     private val user_db = UserDatabase()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         // Init bindings
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
-        sign_binding = ActivitySignInBinding.inflate(layoutInflater)
-        signup_binding = ActivitySignUpBinding.inflate(layoutInflater)
+
+
         video_binding = ActivityVideoBinding.inflate(layoutInflater)
         help_binding = ActivityHelpBinding.inflate(layoutInflater)
 
