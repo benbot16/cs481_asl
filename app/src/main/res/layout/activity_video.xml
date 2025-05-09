@@ -46,41 +46,7 @@
                 android:tint="@color/black"/>
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="#D3E4FA"
-            android:gravity="center"
-            >
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonSignOut"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:backgroundTint="#6E91BA"
-                android:text="Sign Out"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonHome"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:backgroundTint="#6E91BA"
-                android:text="Home"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonHelp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:backgroundTint="#6E91BA"
-                android:text="Help"/>
-
-        </LinearLayout>
-
-
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

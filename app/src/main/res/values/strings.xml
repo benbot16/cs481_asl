@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Friends with Signs</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="help">help</string>
+    <string name="home">home</string>
+    <string name="sign_out">sign_out</string>
 </resources>
