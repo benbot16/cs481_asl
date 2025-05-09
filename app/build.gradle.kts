@@ -5,6 +5,7 @@ plugins {
     // Firebase
     id("com.google.gms.google-services")
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -70,7 +71,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation("androidx.room:room-common:2.7.1")
     implementation("androidx.room:room-runtime:$2.7.1")
-    implementation("androidx.room:room-compiler:$2.7.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,8 +78,10 @@ dependencies {
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation("com.google.firebase:firebase-auth")
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
 }

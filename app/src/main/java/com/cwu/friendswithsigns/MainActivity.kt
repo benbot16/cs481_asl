@@ -6,10 +6,16 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.cwu.friendswithsigns.databinding.ActivityMainBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
     // Initialize view binding properly
     private lateinit var binding: ActivityMainBinding
+    lateinit var auth: FirebaseAuth
+    var user: FirebaseUser? = null
 
 
     private val bottomNavVisibility = mapOf(
@@ -27,9 +33,17 @@ class MainActivity : AppCompatActivity() {
 
     private val showBottomNavOnMainContent = false
 
+    override fun onStart() {
+        super.onStart()
+        user = auth.currentUser
+        if(user != null) {
+            showFragment(VideoFragment())
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        auth = Firebase.auth
         try {
 
             binding = ActivityMainBinding.inflate(layoutInflater)
