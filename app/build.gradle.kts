@@ -68,9 +68,13 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.room:room-common:2.7.1")
+    implementation("androidx.room:room-runtime:$2.7.1")
+    implementation("androidx.room:room-compiler:$2.7.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
