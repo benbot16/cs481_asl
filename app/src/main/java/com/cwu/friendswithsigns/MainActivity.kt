@@ -130,6 +130,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     /**
      * A native method that is implemented by the 'friendswithsigns' native library,
      * which is packaged with this application.
