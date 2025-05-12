@@ -42,8 +42,14 @@ class SignInFragment : Fragment() {
                         .addOnCompleteListener(requireActivity()) { task ->
                             if(task.isSuccessful) {
                                 Log.d("SignInFragment", "User " + activityContext.auth.currentUser?.email + " logged in.")
+                                // Update user ref globally
                                 activityContext.user = activityContext.auth.currentUser
+                                parentFragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainer, VideoFragment())
+                                    .commit() // Automatically handled, so no back stack
                             } else {
+                                view.inputEmail.text.clear();
+                                view.inputPassword.text.clear();
                                 Log.w("SignInFragment", "Login failed with user email: " + user_email)
                                 Toast.makeText(
                                     activityContext,
