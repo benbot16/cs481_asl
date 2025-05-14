@@ -78,6 +78,22 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
+            <EditText
+                android:id="@+id/inputAge"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:hint="Age"
+                android:background="#FFFFFF"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:maxLength="3"/>
+
 
 
             <EditText
