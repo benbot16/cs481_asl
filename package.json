@@ -1,0 +1,22 @@
+{
+  "name": "cs481_asl",
+  "version": "1.0.0",
+  "description": "An ASL web application.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benbot16/cs481_asl.git"
+  },
+  "author": "CS481_CAPSTONE",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/benbot16/cs481_asl/issues"
+  },
+  "homepage": "https://github.com/benbot16/cs481_asl#readme",
+  "dependencies": {
+    "firebase": "^11.7.3"
+  }
+}
