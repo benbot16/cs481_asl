@@ -1,3 +1,29 @@
+// Import the functions you need from the SDKs you need
+
+import { initializeApp } from "firebase/app";
+
+// TODO: Add SDKs for Firebase products that you want to use
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAl4lFfKmB1zY9naWlTZ_MMeIEt2ZVXQCA",
+
+  authDomain: "asl-481.firebaseapp.com",
+
+  projectId: "asl-481",
+
+  storageBucket: "asl-481.firebasestorage.app",
+
+  messagingSenderId: "193153394006",
+
+  appId: "1:193153394006:web:a4c976179ec038ad50a2f7"
+
+};
+const fb_init = initializeApp(firebaseConfig);
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
