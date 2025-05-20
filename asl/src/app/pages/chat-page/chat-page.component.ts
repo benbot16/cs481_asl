@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { DocumentData } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ChatService } from 'src/app/services/chat.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-chat-page',
@@ -13,21 +13,7 @@ import { ChatService } from 'src/app/services/chat.service';
   imports: [AsyncPipe, FormsModule]
 })
 export class ChatPageComponent {
-  chatService = inject(ChatService);
-  messages$ = this.chatService.loadMessages() as Observable<DocumentData[]>;
-  user$ = this.chatService.user$;
+  userService = inject(UserService);
+  user$ = this.userService.user$;
   text = '';
-
-  sendTextMessage() {
-    this.chatService.saveTextMessage(this.text);
-    this.text = '';
-  }
-
-  uploadImage(event: any) {
-    const imgFile: File = event.target.files[0];
-    if (!imgFile) {
-      return;
-    }
-    this.chatService.saveImageMessage(imgFile);
-  }
 }
