@@ -1,16 +1,25 @@
 {
-  "name": "cs481-asl",
-  "version": "0.0.0",
-  "private": true,
+  "name": "cs481_asl",
+  "version": "1.0.0",
+  "description": "CS481 ASL",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benbot16/cs481_asl.git"
+  },
+  "author": "CS481 ASL Team",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/benbot16/cs481_asl/issues"
+  },
+  "homepage": "https://github.com/benbot16/cs481_asl#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "@angular/core": "^19.2.11",
+    "@angular/router": "^19.2.11",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0"
   }
 }
