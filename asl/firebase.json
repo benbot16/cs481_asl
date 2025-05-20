@@ -17,7 +17,7 @@
       }
     },
     {
-      "target": "friendlychat",
+      "target": "cs481-asl",
       "source": ".",
       "frameworksBackend": {}
     }
@@ -61,15 +61,28 @@
       ]
     }
   ],
-  "apphosting": {
-    "backendId": "cs481-asl-backend",
-    "rootDir": "/",
-    "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "firebase-debug.*.log",
-      "functions"
-    ]
-  }
+  "apphosting": [
+    {
+      "backendId": "cs481-asl-backend",
+      "rootDir": "/",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions"
+      ]
+    },
+    {
+      "backendId": "cs481-asl-backend",
+      "rootDir": "/",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions"
+      ]
+    }
+  ]
 }

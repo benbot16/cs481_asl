@@ -1,12 +1,17 @@
 export const environment = {
   firebase: {
-    apiKey: 'API_KEY',
-    authDomain: 'PROJECT_ID.firebaseapp.com',
-    databaseURL: 'https://PROJECT_ID.firebaseio.com',
-    projectId: 'PROJECT_ID',
-    storageBucket: 'PROJECT_ID.appspot.com',
-    messagingSenderId: 'SENDER_ID',
-    appId: 'APP_ID',
-    measurementId: 'G-MEASUREMENT_ID',
+
+    apiKey: "AIzaSyAl4lFfKmB1zY9naWlTZ_MMeIEt2ZVXQCA",
+
+    authDomain: "asl-481.firebaseapp.com",
+
+    projectId: "asl-481",
+
+    storageBucket: "asl-481.firebasestorage.app",
+
+    messagingSenderId: "193153394006",
+
+    appId: "1:193153394006:web:7dd65fb66f2b660e50a2f7",
+
   },
 };
