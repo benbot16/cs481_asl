@@ -73,6 +73,15 @@ export class UserService {
   // Login
   login() {}
 
+  // OAuth
+  LoginGoogle() {
+    signInWithPopup(this.auth, this.provider).then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        this.router.navigate(['/', 'chat']);
+        return credential;
+    })
+  }
+
   // Logout
   logout() {}
 

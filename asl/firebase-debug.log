@@ -1,404 +1,314 @@
-[debug] [2025-05-20T21:16:01.458Z] ----------------------------------------------------------------------
-[debug] [2025-05-20T21:16:01.459Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase deploy -m initial test
-[debug] [2025-05-20T21:16:01.459Z] CLI Version:   14.4.0
-[debug] [2025-05-20T21:16:01.459Z] Platform:      linux
-[debug] [2025-05-20T21:16:01.459Z] Node Version:  v22.15.1
-[debug] [2025-05-20T21:16:01.459Z] Time:          Tue May 20 2025 14:16:01 GMT-0700 (Pacific Daylight Time)
-[debug] [2025-05-20T21:16:01.460Z] ----------------------------------------------------------------------
+[debug] [2025-05-20T22:24:00.324Z] ----------------------------------------------------------------------
+[debug] [2025-05-20T22:24:00.325Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase deploy
+[debug] [2025-05-20T22:24:00.325Z] CLI Version:   14.4.0
+[debug] [2025-05-20T22:24:00.325Z] Platform:      linux
+[debug] [2025-05-20T22:24:00.325Z] Node Version:  v22.15.1
+[debug] [2025-05-20T22:24:00.325Z] Time:          Tue May 20 2025 15:24:00 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-05-20T22:24:00.325Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2025-05-20T21:16:01.568Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:16:01.568Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:16:01.568Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:16:01.568Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:16:01.568Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:16:01.570Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-05-20T21:16:01.570Z] > authorizing via signed-in user (bbreslich@gmail.com)
-[debug] [2025-05-20T21:16:01.570Z] [iam] checking project asl-481 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]
-[debug] [2025-05-20T21:16:01.571Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:16:01.571Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:16:01.572Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions [none]
-[debug] [2025-05-20T21:16:01.572Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:16:01.572Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]}
-[debug] [2025-05-20T21:16:01.714Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions 200
-[debug] [2025-05-20T21:16:01.714Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
-[debug] [2025-05-20T21:16:01.714Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project asl-481:
+[debug] [2025-05-20T22:24:00.422Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-20T22:24:00.422Z] > authorizing via signed-in user (bbreslich@gmail.com)
+[debug] [2025-05-20T22:24:00.422Z] [iam] checking project asl-481 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get",null]
+[debug] [2025-05-20T22:24:00.423Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.423Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.424Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions [none]
+[debug] [2025-05-20T22:24:00.424Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:00.424Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get",null]}
+[debug] [2025-05-20T22:24:00.586Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions 200
+[debug] [2025-05-20T22:24:00.586Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2025-05-20T22:24:00.586Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project asl-481:
 
   
-[debug] [2025-05-20T21:16:01.715Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:16:01.715Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:16:01.715Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions [none]
-[debug] [2025-05-20T21:16:01.715Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:16:02.107Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions 200
-[debug] [2025-05-20T21:16:02.107Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:16:02.107Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:16:02.107Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:16:02.108Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 [none]
-[debug] [2025-05-20T21:16:02.253Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 200
-[debug] [2025-05-20T21:16:02.253Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 {"projectId":"asl-481","projectNumber":"193153394006","displayName":"ASL-481","name":"projects/asl-481","resources":{"hostingSite":"asl-481"},"state":"ACTIVE","etag":"1_ded08c76-c95b-451e-875b-d36eb7986bcd"}
-[error] 
-[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
-[debug] [2025-05-20T21:18:13.632Z] ----------------------------------------------------------------------
-[debug] [2025-05-20T21:18:13.634Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase deploy
-[debug] [2025-05-20T21:18:13.634Z] CLI Version:   14.4.0
-[debug] [2025-05-20T21:18:13.634Z] Platform:      linux
-[debug] [2025-05-20T21:18:13.634Z] Node Version:  v22.15.1
-[debug] [2025-05-20T21:18:13.634Z] Time:          Tue May 20 2025 14:18:13 GMT-0700 (Pacific Daylight Time)
-[debug] [2025-05-20T21:18:13.634Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-05-20T21:18:13.738Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:18:13.738Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:18:13.738Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:18:13.738Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:18:13.738Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:18:13.741Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-05-20T21:18:13.741Z] > authorizing via signed-in user (bbreslich@gmail.com)
-[debug] [2025-05-20T21:18:13.741Z] [iam] checking project asl-481 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]
-[debug] [2025-05-20T21:18:13.742Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:18:13.742Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:18:13.743Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions [none]
-[debug] [2025-05-20T21:18:13.743Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:18:13.743Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]}
-[debug] [2025-05-20T21:18:13.866Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions 200
-[debug] [2025-05-20T21:18:13.866Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
-[debug] [2025-05-20T21:18:13.867Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project asl-481:
-
-  
-[debug] [2025-05-20T21:18:13.867Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:18:13.867Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:18:13.867Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions [none]
-[debug] [2025-05-20T21:18:13.867Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:18:14.285Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions 200
-[debug] [2025-05-20T21:18:14.285Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:18:14.286Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:18:14.286Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:18:14.286Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 [none]
-[debug] [2025-05-20T21:18:14.469Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 200
-[debug] [2025-05-20T21:18:14.469Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 {"projectId":"asl-481","projectNumber":"193153394006","displayName":"ASL-481","name":"projects/asl-481","resources":{"hostingSite":"asl-481"},"state":"ACTIVE","etag":"1_ded08c76-c95b-451e-875b-d36eb7986bcd"}
-[error] 
-[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
-[debug] [2025-05-20T21:27:16.845Z] ----------------------------------------------------------------------
-[debug] [2025-05-20T21:27:16.846Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase deploy
-[debug] [2025-05-20T21:27:16.846Z] CLI Version:   14.4.0
-[debug] [2025-05-20T21:27:16.847Z] Platform:      linux
-[debug] [2025-05-20T21:27:16.847Z] Node Version:  v22.15.1
-[debug] [2025-05-20T21:27:16.847Z] Time:          Tue May 20 2025 14:27:16 GMT-0700 (Pacific Daylight Time)
-[debug] [2025-05-20T21:27:16.847Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-05-20T21:27:16.943Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:27:16.943Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:27:16.943Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:27:16.943Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:27:16.943Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:27:16.945Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-05-20T21:27:16.945Z] > authorizing via signed-in user (bbreslich@gmail.com)
-[debug] [2025-05-20T21:27:16.945Z] [iam] checking project asl-481 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]
-[debug] [2025-05-20T21:27:16.946Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:27:16.946Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:27:16.946Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions [none]
-[debug] [2025-05-20T21:27:16.946Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:27:16.946Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]}
-[debug] [2025-05-20T21:27:17.335Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions 200
-[debug] [2025-05-20T21:27:17.335Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
-[debug] [2025-05-20T21:27:17.335Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project asl-481:
-
-  
-[debug] [2025-05-20T21:27:17.335Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:27:17.335Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:27:17.335Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions [none]
-[debug] [2025-05-20T21:27:17.336Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:27:17.597Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions 200
-[debug] [2025-05-20T21:27:17.597Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:27:17.597Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:27:17.597Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:27:17.597Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 [none]
-[debug] [2025-05-20T21:27:17.937Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 200
-[debug] [2025-05-20T21:27:17.937Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 {"projectId":"asl-481","projectNumber":"193153394006","displayName":"ASL-481","name":"projects/asl-481","resources":{"hostingSite":"asl-481"},"state":"ACTIVE","etag":"1_ded08c76-c95b-451e-875b-d36eb7986bcd"}
-[error] 
-[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
-[debug] [2025-05-20T21:30:41.362Z] ----------------------------------------------------------------------
-[debug] [2025-05-20T21:30:41.363Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase deploy --only apphosting:backendId
-[debug] [2025-05-20T21:30:41.364Z] CLI Version:   14.4.0
-[debug] [2025-05-20T21:30:41.364Z] Platform:      linux
-[debug] [2025-05-20T21:30:41.364Z] Node Version:  v22.15.1
-[debug] [2025-05-20T21:30:41.364Z] Time:          Tue May 20 2025 14:30:41 GMT-0700 (Pacific Daylight Time)
-[debug] [2025-05-20T21:30:41.364Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-05-20T21:30:41.460Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:30:41.460Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:30:41.460Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:30:41.460Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:30:41.460Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:30:41.462Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-05-20T21:30:41.462Z] > authorizing via signed-in user (bbreslich@gmail.com)
-[debug] [2025-05-20T21:30:41.463Z] [iam] checking project asl-481 for permissions ["firebase.projects.get",null]
-[debug] [2025-05-20T21:30:41.463Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:30:41.463Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:30:41.464Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions [none]
-[debug] [2025-05-20T21:30:41.464Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:30:41.464Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["firebase.projects.get",null]}
-[debug] [2025-05-20T21:30:41.650Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions 200
-[debug] [2025-05-20T21:30:41.650Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2025-05-20T21:30:41.650Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project asl-481:
-
-  
+[debug] [2025-05-20T22:24:00.587Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.587Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.587Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-20T22:24:00.587Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-20T22:24:00.711Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-05-20T22:24:00.711Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/asl-481@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
 [info] 
 [info] === Deploying to 'asl-481'...
 [info] 
-[info] i  deploying apphosting 
-[debug] [2025-05-20T21:30:41.652Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:30:41.652Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:30:41.652Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com [none]
-[debug] [2025-05-20T21:30:41.652Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.348Z] ----------------------------------------------------------------------
-[debug] [2025-05-20T21:31:03.349Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase deploy --only apphosting:cs481-asl-backend
-[debug] [2025-05-20T21:31:03.349Z] CLI Version:   14.4.0
-[debug] [2025-05-20T21:31:03.349Z] Platform:      linux
-[debug] [2025-05-20T21:31:03.349Z] Node Version:  v22.15.1
-[debug] [2025-05-20T21:31:03.349Z] Time:          Tue May 20 2025 14:31:03 GMT-0700 (Pacific Daylight Time)
-[debug] [2025-05-20T21:31:03.349Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-05-20T21:31:03.449Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:31:03.450Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:31:03.450Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:31:03.450Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:31:03.450Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:31:03.451Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-05-20T21:31:03.451Z] > authorizing via signed-in user (bbreslich@gmail.com)
-[debug] [2025-05-20T21:31:03.452Z] [iam] checking project asl-481 for permissions ["firebase.projects.get",null]
-[debug] [2025-05-20T21:31:03.452Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.452Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.452Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions [none]
-[debug] [2025-05-20T21:31:03.453Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.453Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["firebase.projects.get",null]}
-[debug] [2025-05-20T21:31:03.573Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions 200
-[debug] [2025-05-20T21:31:03.573Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2025-05-20T21:31:03.573Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project asl-481:
-
-  
-[info] 
-[info] === Deploying to 'asl-481'...
-[info] 
-[info] i  deploying apphosting 
-[debug] [2025-05-20T21:31:03.574Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.575Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.575Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.575Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.982Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com 200
-[debug] [2025-05-20T21:31:03.982Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:03.982Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.982Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.982Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:03.983Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.983Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.984Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.984Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.985Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.986Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.987Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.987Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.988Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.988Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:03.989Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com [none]
-[debug] [2025-05-20T21:31:03.989Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:04.298Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com 200
-[debug] [2025-05-20T21:31:04.298Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:04.305Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com 200
-[debug] [2025-05-20T21:31:04.305Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:04.385Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com 200
-[debug] [2025-05-20T21:31:04.385Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:04.386Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com 200
-[debug] [2025-05-20T21:31:04.386Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:04.393Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com 200
-[debug] [2025-05-20T21:31:04.393Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:04.395Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com 200
-[debug] [2025-05-20T21:31:04.395Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:04.395Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:04.395Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:04.395Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions [none]
-[debug] [2025-05-20T21:31:04.395Z] >>> [apiv2][(partial)header] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:04.395Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:31:04.518Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions 200
-[debug] [2025-05-20T21:31:04.518Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2025-05-20T21:31:04.519Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:04.519Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:04.519Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:getIamPolicy [none]
-[debug] [2025-05-20T21:31:04.673Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:getIamPolicy 200
-[debug] [2025-05-20T21:31:04.673Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:getIamPolicy {"version":1,"etag":"BwY1lcVU5DY=","bindings":[{"role":"roles/artifactregistry.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-artifactregistry.iam.gserviceaccount.com"]},{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:193153394006@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.developer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-193153394006@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-193153394006@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:193153394006-compute@developer.gserviceaccount.com","serviceAccount:asl-481@appspot.gserviceaccount.com","user:CassieThun@gmail.com","user:jwilder108@gmail.com","user:rubitron8@gmail.com","user:sanchez.JS126@gmail.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-193153394006@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebaseappcheck.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebaseapphosting.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com","serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebasehosting.admin","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-193153394006@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:bbreslich@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-193153394006@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/run.viewer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/secretmanager.admin_withcond_993220293303c87343fe","members":["serviceAccount:service-193153394006@gcp-sa-devconnect.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.apiKeysViewer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.serviceUsageConsumer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/storage.objectViewer","members":["serviceAccount:firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com"]}]}
-[debug] [2025-05-20T21:31:04.673Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:04.673Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:04.674Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/-/backends 
-[debug] [2025-05-20T21:31:05.322Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/-/backends 200
-[debug] [2025-05-20T21:31:05.322Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/-/backends {"backends":[{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend","createTime":"2025-05-20T17:07:40.343148835Z","updateTime":"2025-05-20T17:07:40.689408Z","labels":{"deployment-tool":"cli-firebase"},"uri":"cs481-asl-backend--asl-481.us-central1.hosted.app","uid":"1f5978af-f26c-4631-a723-b33d24ba67fb","etag":"M0izJkurIchSAfqo4RvZDQj5LR5E9lyDOzVIo-Frn0Y","reconciling":false,"servingLocality":"GLOBAL_ACCESS","serviceAccount":"firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com","appId":"1:193153394006:web:7dd65fb66f2b660e50a2f7"}]}
+[info] i  deploying firestore, functions, apphosting 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2025-05-20T22:24:00.713Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.714Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.714Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/asl-481:test [none]
+[debug] [2025-05-20T22:24:00.714Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/asl-481:test [omitted]
+[debug] [2025-05-20T22:24:00.833Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/asl-481:test 200
+[debug] [2025-05-20T22:24:00.833Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/asl-481:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2025-05-20T22:24:00.834Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.834Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:00.834Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-05-20T22:24:00.834Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:01.050Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com 200
+[debug] [2025-05-20T22:24:01.051Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:01.051Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.051Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.051Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/asl-481 [none]
+[debug] [2025-05-20T22:24:01.152Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/asl-481 200
+[debug] [2025-05-20T22:24:01.152Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/asl-481 {"projectNumber":"193153394006","projectId":"asl-481","lifecycleState":"ACTIVE","name":"ASL-481","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-04-02T21:30:57.186678Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.153Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.153Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-20T22:24:01.153Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:01.153Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-20T22:24:01.154Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:01.155Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-20T22:24:01.155Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:01.156Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-20T22:24:01.156Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:01.338Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-20T22:24:01.338Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-20T22:24:01.548Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-20T22:24:01.548Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:01.564Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-20T22:24:01.564Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-20T22:24:01.588Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-20T22:24:01.588Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-20T22:24:01.589Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.589Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.589Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/asl-481/adminSdkConfig [none]
+[debug] [2025-05-20T22:24:01.970Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/asl-481/adminSdkConfig 200
+[debug] [2025-05-20T22:24:01.970Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/asl-481/adminSdkConfig {"projectId":"asl-481","storageBucket":"asl-481.firebasestorage.app"}
+[debug] [2025-05-20T22:24:01.971Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.971Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:01.971Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/asl-481/configs [none]
+[debug] [2025-05-20T22:24:02.143Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/asl-481/configs 200
+[debug] [2025-05-20T22:24:02.143Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/asl-481/configs {}
+[debug] [2025-05-20T22:24:02.144Z] Validating nodejs source
+[warn] ⚠  functions: Couldn't find firebase-functions package in your source code. Have you run 'npm install'? 
+[debug] [2025-05-20T22:24:02.145Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
+Require stack:
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/controller.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/commands/database-get.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/commands/index.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/index.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/bin/cli.js
+- /home/benbot16/.n/lib/node_modules/firebase-tools/lib/bin/firebase.js {"code":"MODULE_NOT_FOUND","requireStack":["/home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/controller.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/commands/database-get.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/commands/index.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/index.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/bin/cli.js","/home/benbot16/.n/lib/node_modules/firebase-tools/lib/bin/firebase.js"]}
+[debug] [2025-05-20T22:24:02.145Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
+[debug] [2025-05-20T22:24:02.145Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.ts",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-05-20T22:24:02.146Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-05-20T22:24:02.146Z] Could not parse firebase-functions version '' into semver. Falling back to parseTriggers.
+[debug] [2025-05-20T22:24:02.172Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:02.172Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:02.172Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/asl-481/locations/-/functions [none]
+[debug] [2025-05-20T22:24:02.899Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/asl-481/locations/-/functions 200
+[debug] [2025-05-20T22:24:02.899Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/asl-481/locations/-/functions {}
+[debug] [2025-05-20T22:24:02.899Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:02.899Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:02.900Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/asl-481/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-05-20T22:24:03.293Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/asl-481/locations/-/functions 200
+[debug] [2025-05-20T22:24:03.293Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/asl-481/locations/-/functions {}
+[debug] [2025-05-20T22:24:03.295Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.295Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.295Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.295Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.444Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-05-20T22:24:03.444Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.444Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.445Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.445Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.445Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.445Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.445Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.445Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.446Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.446Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.446Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.446Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.447Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com [none]
+[debug] [2025-05-20T22:24:03.447Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.611Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com 200
+[debug] [2025-05-20T22:24:03.611Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/run.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.813Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com 200
+[debug] [2025-05-20T22:24:03.813Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/developerconnect.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.817Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com 200
+[debug] [2025-05-20T22:24:03.817Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/iam.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.827Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com 200
+[debug] [2025-05-20T22:24:03.828Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/secretmanager.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.830Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-20T22:24:03.830Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudbuild.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.887Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-20T22:24:03.887Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/artifactregistry.googleapis.com [omitted]
+[debug] [2025-05-20T22:24:03.888Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.888Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.888Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-20T22:24:03.888Z] >>> [apiv2][(partial)header] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions x-goog-quota-user=projects/asl-481
+[debug] [2025-05-20T22:24:03.888Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-20T22:24:03.983Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-05-20T22:24:03.983Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/asl-481/serviceAccounts/firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-20T22:24:03.983Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.983Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:03.983Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:getIamPolicy [none]
+[debug] [2025-05-20T22:24:04.096Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:getIamPolicy 200
+[debug] [2025-05-20T22:24:04.096Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/asl-481:getIamPolicy {"version":1,"etag":"BwY1mKRkXcU=","bindings":[{"role":"roles/artifactregistry.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-artifactregistry.iam.gserviceaccount.com"]},{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:193153394006@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.developer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-193153394006@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-193153394006@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:193153394006-compute@developer.gserviceaccount.com","serviceAccount:asl-481@appspot.gserviceaccount.com","user:CassieThun@gmail.com","user:jwilder108@gmail.com","user:rubitron8@gmail.com","user:sanchez.JS126@gmail.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-193153394006@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebaseappcheck.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebaseapphosting.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com","serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebasehosting.admin","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-193153394006@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-193153394006@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@asl-481.iam.gserviceaccount.com"]},{"role":"roles/logging.logWriter","members":["serviceAccount:firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:bbreslich@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-193153394006@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/run.viewer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/secretmanager.admin_withcond_993220293303c87343fe","members":["serviceAccount:service-193153394006@gcp-sa-devconnect.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.apiKeysViewer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.serviceUsageConsumer","members":["serviceAccount:github-action-959478789@asl-481.iam.gserviceaccount.com"]},{"role":"roles/storage.objectViewer","members":["serviceAccount:firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com"]}]}
+[debug] [2025-05-20T22:24:04.097Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.097Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.097Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/-/backends 
+[debug] [2025-05-20T22:24:04.643Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/-/backends 200
+[debug] [2025-05-20T22:24:04.643Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/-/backends {"backends":[{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend","createTime":"2025-05-20T17:07:40.343148835Z","updateTime":"2025-05-20T17:07:40.689408Z","labels":{"deployment-tool":"cli-firebase"},"uri":"cs481-asl-backend--asl-481.us-central1.hosted.app","uid":"1f5978af-f26c-4631-a723-b33d24ba67fb","etag":"M0izJkurIchSAfqo4RvZDQj5LR5E9lyDOzVIo-Frn0Y","reconciling":false,"servingLocality":"GLOBAL_ACCESS","serviceAccount":"firebase-app-hosting-compute@asl-481.iam.gserviceaccount.com","appId":"1:193153394006:web:7dd65fb66f2b660e50a2f7"}]}
 [info] i  apphosting: Found backend(s) cs481-asl-backend, cs481-asl-backend 
-[debug] [2025-05-20T21:31:05.324Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:05.324Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:05.324Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com [none]
-[debug] [2025-05-20T21:31:05.324Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/asl-481
-[debug] [2025-05-20T21:31:05.722Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com 200
-[debug] [2025-05-20T21:31:05.722Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/asl-481/services/cloudresourcemanager.googleapis.com [omitted]
-[debug] [2025-05-20T21:31:05.722Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:05.722Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:05.722Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/asl-481 [none]
-[debug] [2025-05-20T21:31:05.812Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/asl-481 200
-[debug] [2025-05-20T21:31:05.812Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/asl-481 {"projectNumber":"193153394006","projectId":"asl-481","lifecycleState":"ACTIVE","name":"ASL-481","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-04-02T21:30:57.186678Z"}
-[debug] [2025-05-20T21:31:05.812Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:05.812Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:05.812Z] >>> [apiv2][query] GET https://storage.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1 [none]
-[debug] [2025-05-20T21:31:06.009Z] <<< [apiv2][status] GET https://storage.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1 200
-[debug] [2025-05-20T21:31:06.009Z] <<< [apiv2][body] GET https://storage.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1 {"kind":"storage#bucket","selfLink":"https://www.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1","id":"firebaseapphosting-sources-193153394006-us-central1","name":"firebaseapphosting-sources-193153394006-us-central1","projectNumber":"193153394006","generation":"1747767216598400917","metageneration":"1","location":"US-CENTRAL1","storageClass":"STANDARD","etag":"CAE=","timeCreated":"2025-05-20T18:53:36.711Z","updated":"2025-05-20T18:53:36.711Z","lifecycle":{"rule":[{"action":{"type":"Delete"},"condition":{"age":30}}]},"softDeletePolicy":{"retentionDurationSeconds":"604800","effectiveTime":"2025-05-20T18:53:36.711Z"},"iamConfiguration":{"bucketPolicyOnly":{"enabled":false},"uniformBucketLevelAccess":{"enabled":false},"publicAccessPrevention":"inherited"},"locationType":"region","satisfiesPZI":true}
+[debug] [2025-05-20T22:24:04.644Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.644Z] Checked if tokens are valid: true, expires at: 1747783236446
+[info] i  firestore: deploying indexes... 
+[debug] [2025-05-20T22:24:04.645Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.645Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.645Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/asl-481/releases pageSize=10&pageToken=
+[debug] [2025-05-20T22:24:04.645Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/asl-481/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2025-05-20T22:24:04.908Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/asl-481/releases 200
+[debug] [2025-05-20T22:24:04.908Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/asl-481/releases {"releases":[{"name":"projects/asl-481/releases/cloud.firestore","rulesetName":"projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250","createTime":"2025-04-14T21:17:48.742421Z","updateTime":"2025-05-20T18:53:54.585929Z"},{"name":"projects/asl-481/releases/cloud.firestore/app-data","rulesetName":"projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250","createTime":"2025-05-07T21:23:06.668948Z","updateTime":"2025-05-12T23:47:17.515182Z"}]}
+[debug] [2025-05-20T22:24:04.915Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.915Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:04.915Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250 [none]
+[debug] [2025-05-20T22:24:05.006Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250 200
+[debug] [2025-05-20T22:24:05.006Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250 [omitted]
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload... 
+[debug] [2025-05-20T22:24:05.029Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/asl-481/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2025-05-20T22:24:05.029Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/asl-481/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2025-05-20T22:24:05.030Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.030Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.030Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/asl-481/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2025-05-20T22:24:05.140Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/asl-481/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2025-05-20T22:24:05.140Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/asl-481/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/asl-481/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully for (default) database 
+[debug] [2025-05-20T22:24:05.141Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.141Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.141Z] >>> [apiv2][query] GET https://storage.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1 [none]
+[debug] [2025-05-20T22:24:05.266Z] <<< [apiv2][status] GET https://storage.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1 200
+[debug] [2025-05-20T22:24:05.266Z] <<< [apiv2][body] GET https://storage.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1 {"kind":"storage#bucket","selfLink":"https://www.googleapis.com/storage/v1/b/firebaseapphosting-sources-193153394006-us-central1","id":"firebaseapphosting-sources-193153394006-us-central1","name":"firebaseapphosting-sources-193153394006-us-central1","projectNumber":"193153394006","generation":"1747767216598400917","metageneration":"1","location":"US-CENTRAL1","storageClass":"STANDARD","etag":"CAE=","timeCreated":"2025-05-20T18:53:36.711Z","updated":"2025-05-20T18:53:36.711Z","lifecycle":{"rule":[{"action":{"type":"Delete"},"condition":{"age":30}}]},"softDeletePolicy":{"retentionDurationSeconds":"604800","effectiveTime":"2025-05-20T18:53:36.711Z"},"iamConfiguration":{"bucketPolicyOnly":{"enabled":false},"uniformBucketLevelAccess":{"enabled":false},"publicAccessPrevention":"inherited"},"locationType":"region","satisfiesPZI":true}
 [info] i  apphosting: Uploading source code at /home/benbot16/Documents/cs481_asl/asl for backend cs481-asl-backend... 
-[debug] [2025-05-20T21:31:06.050Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.050Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.050Z] >>> [apiv2][query] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip [none]
-[debug] [2025-05-20T21:31:06.050Z] >>> [apiv2][body] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip [stream]
-[debug] [2025-05-20T21:31:06.311Z] <<< [apiv2][status] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip 200
-[debug] [2025-05-20T21:31:06.311Z] <<< [apiv2][body] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip undefined
-[info] i  apphosting: Source code uploaded at gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip 
-[debug] [2025-05-20T21:31:06.312Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.312Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.312Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.312Z] Checked if tokens are valid: true, expires at: 1747779226829
+[debug] [2025-05-20T22:24:05.311Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.311Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.311Z] >>> [apiv2][query] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--127844-ezzDMUWV1sEy-.zip [none]
+[debug] [2025-05-20T22:24:05.311Z] >>> [apiv2][body] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--127844-ezzDMUWV1sEy-.zip [stream]
+[debug] [2025-05-20T22:24:05.572Z] <<< [apiv2][status] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--127844-ezzDMUWV1sEy-.zip 200
+[debug] [2025-05-20T22:24:05.572Z] <<< [apiv2][body] PUT https://storage.googleapis.com/firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--127844-ezzDMUWV1sEy-.zip undefined
+[info] i  apphosting: Source code uploaded at gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--127844-ezzDMUWV1sEy-.zip 
+[debug] [2025-05-20T22:24:05.573Z] [rules] releasing cloud.firestore/(default) with ruleset projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250
+[debug] [2025-05-20T22:24:05.573Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.573Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.573Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/asl-481/releases/cloud.firestore/(default) [none]
+[debug] [2025-05-20T22:24:05.573Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/asl-481/releases/cloud.firestore/(default) {"release":{"name":"projects/asl-481/releases/cloud.firestore/(default)","rulesetName":"projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250"}}
+[debug] [2025-05-20T22:24:05.683Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/asl-481/releases/cloud.firestore/(default) 200
+[debug] [2025-05-20T22:24:05.683Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/asl-481/releases/cloud.firestore/(default) {"name":"projects/asl-481/releases/cloud.firestore","rulesetName":"projects/asl-481/rulesets/0a1a2f5f-7abe-44f5-854a-19d88e97b250","createTime":"2025-04-14T21:17:48.742421Z","updateTime":"2025-05-20T22:24:07.500902Z"}
+[debug] [2025-05-20T22:24:05.683Z] [rules] updated release projects/asl-481/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[debug] [2025-05-20T22:24:05.684Z] Total Function Deployment time: 0
+[debug] [2025-05-20T22:24:05.684Z] 0 Functions Deployed
+[debug] [2025-05-20T22:24:05.684Z] 0 Functions Errored
+[debug] [2025-05-20T22:24:05.684Z] 0 Function Deployments Aborted
+[debug] [2025-05-20T22:24:05.684Z] Average Function Deployment time: NaN
+[debug] [2025-05-20T22:24:05.685Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.685Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.685Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:05.685Z] Checked if tokens are valid: true, expires at: 1747783236446
 [info] i  apphosting: You may also track the rollout(s) at:
 	https://console.firebase.google.com/project/asl-481/apphosting 
-[debug] [2025-05-20T21:31:06.315Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 
-[debug] [2025-05-20T21:31:06.315Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds 
-[debug] [2025-05-20T21:31:06.612Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 200
-[debug] [2025-05-20T21:31:06.613Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"rollouts":[{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-001","createTime":"2025-05-20T18:53:56.409781276Z","updateTime":"2025-05-20T18:57:29.132592Z","state":"FAILED","build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-001","labels":{"deployment-tool":"cli-firebase"},"uid":"32b7e80a-137b-4b9f-93db-352eff247237","etag":"yBsPhs2pT211b1cytInOfuhhDwbestO65EIFZmLpbWw","reconciling":false}]}
-[debug] [2025-05-20T21:31:06.650Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds 200
-[debug] [2025-05-20T21:31:06.650Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds {"builds":[{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-001","state":"FAILED","error":{"code":13},"image":"us-central1-docker.pkg.dev/asl-481/firebaseapphosting-images/cs481-asl-backend:build-2025-05-20-001","config":{"runConfig":{},"env":[{"variable":"FIREBASE_CONFIG","value":"{\"databaseURL\":\"\",\"projectId\":\"asl-481\",\"storageBucket\":\"asl-481.firebasestorage.app\"}","availability":["BUILD","RUNTIME"]},{"variable":"FIREBASE_WEBAPP_CONFIG","value":"{\"apiKey\":\"AIzaSyAl4lFfKmB1zY9naWlTZ_MMeIEt2ZVXQCA\",\"appId\":\"1:193153394006:web:7dd65fb66f2b660e50a2f7\",\"authDomain\":\"asl-481.firebaseapp.com\",\"databaseURL\":\"\",\"messagingSenderId\":\"193153394006\",\"projectId\":\"asl-481\",\"storageBucket\":\"asl-481.firebasestorage.app\"}","availability":["BUILD"]}]},"source":{"archive":{"rootDirectory":"./cs481-asl","userStorageUri":"gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--113657-fKoKald9w8Ad-.zip"}},"buildLogsUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/1af0fd01-c56a-4905-b511-c0ee1e42c968?project=193153394006","createTime":"2025-05-20T18:53:56.005219817Z","updateTime":"2025-05-20T18:57:28.589476Z","labels":{"deployment-tool":"cli-firebase"},"uid":"f9d3b44a-22f1-41f8-b371-e49b3704e83e","etag":"KcY5ETchL6jn6tDoEN_4PMe7TEAAkuuEyGYRMA56R_g","reconciling":false,"errorSource":"CLOUD_BUILD","errors":[{"error":{"code":13},"errorSource":"CLOUD_BUILD","cloudResource":"https://cloud.google.com/build"}]}]}
-[debug] [2025-05-20T21:31:06.652Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.652Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.652Z] >>> [apiv2][query] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds buildId=build-2025-05-20-002
-[debug] [2025-05-20T21:31:06.652Z] >>> [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds {"source":{"archive":{"userStorageUri":"gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip","rootDirectory":"/"}},"labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2025-05-20T21:31:06.794Z] <<< [apiv2][status] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds 200
-[debug] [2025-05-20T21:31:06.794Z] <<< [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:06.794Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.794Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.794Z] >>> [apiv2][query] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts rolloutId=build-2025-05-20-002&validateOnly=true
-[debug] [2025-05-20T21:31:06.794Z] >>> [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2025-05-20T21:31:06.882Z] <<< [apiv2][status] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 200
-[debug] [2025-05-20T21:31:06.882Z] <<< [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {}
-[debug] [2025-05-20T21:31:06.882Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.882Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:06.882Z] >>> [apiv2][query] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts rolloutId=build-2025-05-20-002&validateOnly=false
-[debug] [2025-05-20T21:31:06.882Z] >>> [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2025-05-20T21:31:06.999Z] <<< [apiv2][status] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 200
-[debug] [2025-05-20T21:31:06.999Z] <<< [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668326-63597f7765b8d-45c5131b-9fecd96e","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.342253978Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:07.000Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:07.000Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:07.000Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:07.000Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:07.000Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668326-63597f7765b8d-45c5131b-9fecd96e [none]
-[debug] [2025-05-20T21:31:07.000Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 [none]
-[debug] [2025-05-20T21:31:07.081Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668326-63597f7765b8d-45c5131b-9fecd96e 200
-[debug] [2025-05-20T21:31:07.081Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668326-63597f7765b8d-45c5131b-9fecd96e {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668326-63597f7765b8d-45c5131b-9fecd96e","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.342253978Z","endTime":"2025-05-20T21:31:08.380152657Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":true,"response":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.Rollout","name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-002","createTime":"2025-05-20T21:31:08.335312477Z","updateTime":"2025-05-20T21:31:08.369992596Z","state":"QUEUED","build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","labels":{"deployment-tool":"cli-firebase"},"uid":"08cadcbd-a7bb-4d18-afa5-968e440ceee0","etag":"Thg8KLh5ZlgnPKS0Oiggr7BLEcuDhAKZ_yQaOqM9vkI","reconciling":false}}
-[debug] [2025-05-20T21:31:07.105Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 200
-[debug] [2025-05-20T21:31:07.105Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:07.606Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-002] Retrying task index 0
-[debug] [2025-05-20T21:31:07.606Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:07.606Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:07.606Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 [none]
-[debug] [2025-05-20T21:31:07.682Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 200
-[debug] [2025-05-20T21:31:07.683Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:08.683Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-002] Retrying task index 0
-[debug] [2025-05-20T21:31:08.683Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:08.683Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:08.683Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 [none]
-[debug] [2025-05-20T21:31:08.750Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 200
-[debug] [2025-05-20T21:31:08.750Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:10.751Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-002] Retrying task index 0
-[debug] [2025-05-20T21:31:10.751Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:10.751Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:10.751Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 [none]
-[debug] [2025-05-20T21:31:10.808Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 200
-[debug] [2025-05-20T21:31:10.808Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:14.808Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-002] Retrying task index 0
-[debug] [2025-05-20T21:31:14.809Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:14.809Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:14.809Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 [none]
-[debug] [2025-05-20T21:31:14.882Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 200
-[debug] [2025-05-20T21:31:14.882Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:22.883Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-002] Retrying task index 0
-[debug] [2025-05-20T21:31:22.883Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:22.883Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:22.883Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 [none]
-[debug] [2025-05-20T21:31:23.172Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 200
-[debug] [2025-05-20T21:31:23.172Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747776668096-63597f772d84d-a4bc6404-901bd016","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T21:31:08.137120809Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
-[debug] [2025-05-20T21:31:44.655Z] ----------------------------------------------------------------------
-[debug] [2025-05-20T21:31:44.657Z] Command:       /home/benbot16/.n/bin/node /home/benbot16/.n/bin/firebase init hosting
-[debug] [2025-05-20T21:31:44.657Z] CLI Version:   14.4.0
-[debug] [2025-05-20T21:31:44.657Z] Platform:      linux
-[debug] [2025-05-20T21:31:44.657Z] Node Version:  v22.15.1
-[debug] [2025-05-20T21:31:44.657Z] Time:          Tue May 20 2025 14:31:44 GMT-0700 (Pacific Daylight Time)
-[debug] [2025-05-20T21:31:44.657Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2025-05-20T21:31:44.754Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:31:44.755Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:31:44.755Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:31:44.755Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:31:44.755Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:31:44.756Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-05-20T21:31:44.756Z] > authorizing via signed-in user (bbreslich@gmail.com)
-[debug] [2025-05-20T21:31:44.757Z] Field "/hosting" in "firebase.json" is possibly invalid: must be object
-[debug] [2025-05-20T21:31:44.757Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"target"}
-[debug] [2025-05-20T21:31:44.757Z] Object "/hosting/0" in "firebase.json" is missing required property: {"missingProperty":"site"}
-[debug] [2025-05-20T21:31:44.757Z] Field "/hosting/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[debug] [2025-05-20T21:31:44.757Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
-[info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
-
-You're about to initialize a Firebase project in this directory:
-
-  /home/benbot16/Documents/cs481_asl/asl
-
-Before we get started, keep in mind:
-
-  * You are initializing within an existing Firebase project directory
-
-[info] 
-=== Project Setup
-[info] 
-[info] First, let's associate this project directory with a Firebase project.
-[info] You can create multiple project aliases by running firebase use --add, 
-[info] but for now we'll just set up a default project.
-[info] 
-[debug] [2025-05-20T21:31:44.758Z] Using project from CLI flag: asl-481
-[debug] [2025-05-20T21:31:44.759Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:44.759Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:44.759Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 [none]
-[debug] [2025-05-20T21:31:44.957Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 200
-[debug] [2025-05-20T21:31:44.957Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 {"projectId":"asl-481","projectNumber":"193153394006","displayName":"ASL-481","name":"projects/asl-481","resources":{"hostingSite":"asl-481"},"state":"ACTIVE","etag":"1_ded08c76-c95b-451e-875b-d36eb7986bcd"}
-[info] i  Using project asl-481 (ASL-481) 
-[info] 
-=== Hosting Setup
-[debug] [2025-05-20T21:31:44.960Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:44.960Z] Checked if tokens are valid: true, expires at: 1747779226829
-[debug] [2025-05-20T21:31:44.960Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 [none]
-[debug] [2025-05-20T21:31:45.089Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 200
-[debug] [2025-05-20T21:31:45.089Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/asl-481 {"projectId":"asl-481","projectNumber":"193153394006","displayName":"ASL-481","name":"projects/asl-481","resources":{"hostingSite":"asl-481"},"state":"ACTIVE","etag":"1_ded08c76-c95b-451e-875b-d36eb7986bcd"}
-[debug] [2025-05-20T21:32:05.079Z] ExitPromptError: User force closed the prompt with SIGINT
-    at Interface.sigint (/home/benbot16/.n/lib/node_modules/firebase-tools/node_modules/@inquirer/core/dist/commonjs/lib/create-prompt.js:100:37)
-    at Interface.emit (node:events:518:28)
-    at Interface.emit (node:domain:489:12)
-    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1128:18)
-    at ReadStream.onkeypress (node:internal/readline/interface:267:20)
-    at ReadStream.emit (node:events:530:35)
-    at ReadStream.emit (node:domain:489:12)
-    at emitKeys (node:internal/readline/utils:370:14)
-    at emitKeys.next (<anonymous>)
-    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
-[error] 
-[error] Error: An unexpected error has occurred.
+[debug] [2025-05-20T22:24:05.688Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 
+[debug] [2025-05-20T22:24:05.688Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds 
+[debug] [2025-05-20T22:24:05.988Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 200
+[debug] [2025-05-20T22:24:05.988Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"rollouts":[{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-001","createTime":"2025-05-20T18:53:56.409781276Z","updateTime":"2025-05-20T18:57:29.132592Z","state":"FAILED","build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-001","labels":{"deployment-tool":"cli-firebase"},"uid":"32b7e80a-137b-4b9f-93db-352eff247237","etag":"yBsPhs2pT211b1cytInOfuhhDwbestO65EIFZmLpbWw","reconciling":false},{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-002","createTime":"2025-05-20T21:31:08.335312477Z","updateTime":"2025-05-20T21:33:30.128777Z","state":"FAILED","build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","labels":{"deployment-tool":"cli-firebase"},"uid":"08cadcbd-a7bb-4d18-afa5-968e440ceee0","etag":"NjGkS0EQeOOWRzShAjS_u8g9vwmsxj87pjOm4BkQmjs","reconciling":false}]}
+[debug] [2025-05-20T22:24:06.008Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds 200
+[debug] [2025-05-20T22:24:06.008Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds {"builds":[{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-001","state":"FAILED","error":{"code":13},"image":"us-central1-docker.pkg.dev/asl-481/firebaseapphosting-images/cs481-asl-backend:build-2025-05-20-001","config":{"runConfig":{},"env":[{"variable":"FIREBASE_CONFIG","value":"{\"databaseURL\":\"\",\"projectId\":\"asl-481\",\"storageBucket\":\"asl-481.firebasestorage.app\"}","availability":["BUILD","RUNTIME"]},{"variable":"FIREBASE_WEBAPP_CONFIG","value":"{\"apiKey\":\"AIzaSyAl4lFfKmB1zY9naWlTZ_MMeIEt2ZVXQCA\",\"appId\":\"1:193153394006:web:7dd65fb66f2b660e50a2f7\",\"authDomain\":\"asl-481.firebaseapp.com\",\"databaseURL\":\"\",\"messagingSenderId\":\"193153394006\",\"projectId\":\"asl-481\",\"storageBucket\":\"asl-481.firebasestorage.app\"}","availability":["BUILD"]}]},"source":{"archive":{"rootDirectory":"./cs481-asl","userStorageUri":"gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--113657-fKoKald9w8Ad-.zip"}},"buildLogsUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/1af0fd01-c56a-4905-b511-c0ee1e42c968?project=193153394006","createTime":"2025-05-20T18:53:56.005219817Z","updateTime":"2025-05-20T18:57:28.589476Z","labels":{"deployment-tool":"cli-firebase"},"uid":"f9d3b44a-22f1-41f8-b371-e49b3704e83e","etag":"KcY5ETchL6jn6tDoEN_4PMe7TEAAkuuEyGYRMA56R_g","reconciling":false,"errorSource":"CLOUD_BUILD","errors":[{"error":{"code":13},"errorSource":"CLOUD_BUILD","cloudResource":"https://cloud.google.com/build"}]},{"name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-002","state":"FAILED","error":{"code":13},"image":"us-central1-docker.pkg.dev/asl-481/firebaseapphosting-images/cs481-asl-backend:build-2025-05-20-002","config":{"runConfig":{}},"source":{"archive":{"rootDirectory":"/","userStorageUri":"gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--120748-iP7Ox3OUgcDZ-.zip"}},"buildLogsUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/ee14618d-9e71-4f94-9e7b-ca05e2baa263?project=193153394006","createTime":"2025-05-20T21:31:08.129701910Z","updateTime":"2025-05-20T21:33:29.722388Z","labels":{"deployment-tool":"cli-firebase"},"uid":"7848c5e5-346c-4b8f-a69c-366d22049db3","etag":"keatvte7k92y7tN3n_BpGjOiJMaMmtVZcnru8_jsUHY","reconciling":false,"errorSource":"CLOUD_BUILD","errors":[{"error":{"code":13},"errorSource":"CLOUD_BUILD","cloudResource":"https://cloud.google.com/build"}]}]}
+[debug] [2025-05-20T22:24:06.008Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.008Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.009Z] >>> [apiv2][query] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds buildId=build-2025-05-20-003
+[debug] [2025-05-20T22:24:06.009Z] >>> [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds {"source":{"archive":{"userStorageUri":"gs://firebaseapphosting-sources-193153394006-us-central1/cs481-asl-backend--127844-ezzDMUWV1sEy-.zip","rootDirectory":"/"}},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-05-20T22:24:06.145Z] <<< [apiv2][status] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds 200
+[debug] [2025-05-20T22:24:06.145Z] <<< [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:07.962908019Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
+[debug] [2025-05-20T22:24:06.145Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.145Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.145Z] >>> [apiv2][query] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts rolloutId=build-2025-05-20-003&validateOnly=true
+[debug] [2025-05-20T22:24:06.146Z] >>> [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-05-20T22:24:06.238Z] <<< [apiv2][status] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 200
+[debug] [2025-05-20T22:24:06.239Z] <<< [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {}
+[debug] [2025-05-20T22:24:06.239Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.239Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.239Z] >>> [apiv2][query] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts rolloutId=build-2025-05-20-003&validateOnly=false
+[debug] [2025-05-20T22:24:06.239Z] >>> [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-05-20T22:24:06.342Z] <<< [apiv2][status] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts 200
+[debug] [2025-05-20T22:24:06.342Z] <<< [apiv2][body] POST https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779848150-63598b4fe9d94-4a640424-14f18be1","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:08.163306844Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
+[debug] [2025-05-20T22:24:06.343Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.343Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.343Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.343Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.343Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779848150-63598b4fe9d94-4a640424-14f18be1 [none]
+[debug] [2025-05-20T22:24:06.343Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a [none]
+[debug] [2025-05-20T22:24:06.418Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779848150-63598b4fe9d94-4a640424-14f18be1 200
+[debug] [2025-05-20T22:24:06.418Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779848150-63598b4fe9d94-4a640424-14f18be1 {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779848150-63598b4fe9d94-4a640424-14f18be1","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:08.163306844Z","endTime":"2025-05-20T22:24:08.197928480Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":true,"response":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.Rollout","name":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/rollouts/build-2025-05-20-003","createTime":"2025-05-20T22:24:08.157668250Z","updateTime":"2025-05-20T22:24:08.188861453Z","state":"QUEUED","build":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","labels":{"deployment-tool":"cli-firebase"},"uid":"08b6bad1-f7e2-449a-8f02-644895a6e125","etag":"sfwsvMP7IXF2bajg4_iglQm0_hEHidL44DGzpPC8hWM","reconciling":false}}
+[debug] [2025-05-20T22:24:06.441Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a 200
+[debug] [2025-05-20T22:24:06.441Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:07.962908019Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
+[debug] [2025-05-20T22:24:06.943Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-003] Retrying task index 0
+[debug] [2025-05-20T22:24:06.943Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.943Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:06.943Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a [none]
+[debug] [2025-05-20T22:24:07.025Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a 200
+[debug] [2025-05-20T22:24:07.025Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:07.962908019Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
+[debug] [2025-05-20T22:24:08.025Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-003] Retrying task index 0
+[debug] [2025-05-20T22:24:08.025Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:08.025Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:08.025Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a [none]
+[debug] [2025-05-20T22:24:08.090Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a 200
+[debug] [2025-05-20T22:24:08.090Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:07.962908019Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}
+[debug] [2025-05-20T22:24:10.090Z] [create-asl-481-us-central1-backend-cs481-asl-backend-build-build-2025-05-20-003] Retrying task index 0
+[debug] [2025-05-20T22:24:10.091Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:10.091Z] Checked if tokens are valid: true, expires at: 1747783236446
+[debug] [2025-05-20T22:24:10.091Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a [none]
+[debug] [2025-05-20T22:24:10.168Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a 200
+[debug] [2025-05-20T22:24:10.169Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a {"name":"projects/asl-481/locations/us-central1/operations/operation-1747779847921-63598b4fb1df6-8712b1ce-2776bb3a","metadata":{"@type":"type.googleapis.com/google.firebase.apphosting.v1beta.OperationMetadata","createTime":"2025-05-20T22:24:07.962908019Z","target":"projects/asl-481/locations/us-central1/backends/cs481-asl-backend/builds/build-2025-05-20-003","verb":"create","requestedCancellation":false,"apiVersion":"v1beta"},"done":false}

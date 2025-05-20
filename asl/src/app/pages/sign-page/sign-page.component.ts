@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   standalone: true,
   imports: [AsyncPipe, FormsModule]
 })
-export class ChatPageComponent {
+export class SignPageComponent {
   userService = inject(UserService);
   user$ = this.userService.user$;
   text = '';

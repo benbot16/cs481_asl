@@ -4,24 +4,6 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "hosting": [
-    {
-      "source": ".",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "frameworksBackend": {
-        "region": "us-central1"
-      }
-    },
-    {
-      "target": "cs481-asl",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ],
   "emulators": {
     "auth": {
       "port": 9099
@@ -52,9 +34,6 @@
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
       ]
     }
   ],
