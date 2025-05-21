@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-chat-page',
-  templateUrl: './chat-page.component.html',
-  styleUrls: ['./chat-page.component.css'],
+  selector: 'app-sign-page',
+  templateUrl: './sign-page.component.html',
+  styleUrls: ['./sign-page.component.css'],
   standalone: true,
   imports: [AsyncPipe, FormsModule]
 })
