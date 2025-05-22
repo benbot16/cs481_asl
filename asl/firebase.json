@@ -9,7 +9,7 @@
       "port": 9099
     },
     "functions": {
-      "port": 5001
+      "port": 5005
     },
     "firestore": {
       "port": 8089
