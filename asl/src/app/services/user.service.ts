@@ -3,6 +3,8 @@ import {
   Auth,
   authState,
   signInWithPopup,
+  signInWithEmailAndPassword,
+  signInAnonymously,
   GoogleAuthProvider,
   signOut,
   user,
@@ -71,19 +73,42 @@ export class UserService {
   }
 
   // Login
-  login() {}
+  login(email: string | null | undefined, password: string | null | undefined) {
+    if(!email || !password) {
+      return false;
+    }
+    signInWithEmailAndPassword(this.auth, email, password).then((result) => {
+      if(!result) {
+        return false;
+      }
+      this.router.navigate(['/', 'sign'])
+      return true;
+    })
+    return false
+  }
 
   // OAuth
-  LoginGoogle() {
+  loginGoogle() {
     signInWithPopup(this.auth, this.provider).then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        this.router.navigate(['/', 'chat']);
+        this.router.navigate(['/', 'sign']);
         return credential;
     })
   }
 
+  // Anon
+  loginAnon() {
+    signInAnonymously(this.auth).then(() => {
+      this.router.navigate(['/', 'sign']);
+    })
+  }
+
   // Logout
-  logout() {}
+  logout() {
+    signOut(this.auth).then((result) => {
+      this.router.navigate(['/', 'login']);
+    })
+  }
 
   // Update a user's data
   async updateData(path: string, data: any) {}
