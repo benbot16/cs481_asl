@@ -2,9 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import {
   Auth,
   authState,
-  signInWithPopup,
+  signInWithRedirect,
   signInWithEmailAndPassword,
   signInAnonymously,
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signOut,
   user,
@@ -72,6 +73,24 @@ export class UserService {
     });
   }
 
+  // Signup
+  signUp(email: string | null | undefined, password: string | null | undefined, confirm: string | null | undefined) {
+    if(!email || !password || !confirm) {
+      return false;
+    }
+    if(password != confirm) {
+      return false;
+    }
+
+    createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
+      const user = result.user;
+      return true;
+    }).catch((error) => {
+      console.log('Sign up error: ' + error)
+    });
+    return false;
+  }
+
   // Login
   login(email: string | null | undefined, password: string | null | undefined) {
     if(!email || !password) {
@@ -83,17 +102,21 @@ export class UserService {
       }
       this.router.navigate(['/', 'sign'])
       return true;
-    })
+    }).catch((error) => {
+    console.log('Sign in error: ' + error);
+  })
     return false
   }
 
   // OAuth
   loginGoogle() {
-    signInWithPopup(this.auth, this.provider).then((result) => {
+    signInWithRedirect(this.auth, this.provider).then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         this.router.navigate(['/', 'sign']);
         return credential;
-    })
+    }).catch((error) => {
+        console.log('Sign in error: ' + error);
+      })
   }
 
   // Anon
