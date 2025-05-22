@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, Validators} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginPageComponent {
   profileForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
   });
   loginFailed = false;
   userService = inject(UserService);

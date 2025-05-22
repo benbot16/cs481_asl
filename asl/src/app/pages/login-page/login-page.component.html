@@ -8,9 +8,17 @@
             <span class="text-navy-600 text-5xl font-light mt-5">Friendly Chat</span>
         </div>
         <form [formGroup]="profileForm" (ngSubmit)="doLogin()">
+          <p>
+          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between"> Email
           <input type="email" formControlName="email" />
+          </label>
+          </p>
+          <p>
+          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" > Password
           <input type="password" formControlName="password" />
-          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit">
+          </label>
+          </p>
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit" [disabled]="!profileForm.valid">
               <span class="text-slate-700 text-xl flex-grow">Sign in</span>
           </button>
         </form>
