@@ -12,4 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 export class HeaderComponent {
   userService = inject(UserService);
   user$ = this.userService.user$;
+
+  logout() {
+    this.userService.logout();
+  }
 }

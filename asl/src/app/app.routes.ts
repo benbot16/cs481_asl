@@ -4,11 +4,17 @@ import {
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
+import { inject } from '@angular/core'
+import { map } from 'rxjs/operators';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignPageComponent } from './pages/sign-page/sign-page.component';
+import { UserService } from './services/user.service'
+import { LoginAuthGuard } from './routing/login-auth-guard.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['sign']);
+
+
 
 export const routes: Routes = [
   {
@@ -20,8 +26,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectLoggedInToHome },
+    canActivate: [LoginAuthGuard],
   },
   {
     path: 'sign',
@@ -29,4 +34,4 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
-];
+]

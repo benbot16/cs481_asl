@@ -11,6 +11,8 @@ import {
   user,
   getAuth,
   User,
+  EmailAuthProvider,
+  linkWithCredential,
 } from '@angular/fire/auth';
 import { map, switchMap, firstValueFrom, filter, Observable, Subscription } from 'rxjs';
 import {
@@ -82,12 +84,22 @@ export class UserService {
       return false;
     }
 
-    createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
-      const user = result.user;
-      return true;
-    }).catch((error) => {
-      console.log('Sign up error: ' + error)
-    });
+    if(!this.isAnonLoggedIn()) {
+      createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
+        const user = result.user;
+        return true;
+      }).catch((error) => {
+        console.log('Sign up error: ' + error);
+      });
+    } else {
+      // anon is logged in, so currentUser exists
+      const cred = EmailAuthProvider.credential(email, password);
+      linkWithCredential(this.auth.currentUser!!,  cred).then((newcred) => {
+        const user = newcred.user;
+      }).catch((error) => {
+          console.log('Account upgrade error: ' + error);
+        });
+    }
     return false;
   }
 
@@ -104,7 +116,7 @@ export class UserService {
       return true;
     }).catch((error) => {
     console.log('Sign in error: ' + error);
-  })
+  });
     return false
   }
 
@@ -116,21 +128,34 @@ export class UserService {
         return credential;
     }).catch((error) => {
         console.log('Sign in error: ' + error);
-      })
+      });
   }
 
   // Anon
   loginAnon() {
     signInAnonymously(this.auth).then(() => {
       this.router.navigate(['/', 'sign']);
-    })
+    });
+  }
+
+  isAnonLoggedIn() {
+    if(this.auth == null || this.auth.currentUser == null) {
+      return false;
+    } else {
+      if(this.auth.currentUser.isAnonymous) {
+        return true;
+      }
+    }
+    return false;
   }
 
   // Logout
   logout() {
     signOut(this.auth).then((result) => {
       this.router.navigate(['/', 'login']);
-    })
+    }).catch((error) => {
+      console.log('Sign out error: ' + error.code + "; " + error.message);
+      });
   }
 
   // Update a user's data
