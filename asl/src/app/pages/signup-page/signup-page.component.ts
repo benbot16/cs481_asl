@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {ReactiveFormsModule, Validators} from '@angular/forms';
+import {ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,9 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupPageComponent {
   profileForm = new FormGroup({
-    fname: new FormControl('', Validators.required),
-    lname: new FormControl('', Validators.required),
-    age: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+    fname: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z]+')]),
+    lname: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z]+')]),
+    age: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(18)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
@@ -48,14 +48,14 @@ export class SignupPageComponent {
   user$ = this.userService.user$;
 
   doSignUp() {
-    // Backup check
-    if(this.profileForm.value.password != this.profileForm.value.confirmPassword) {
-      return false;
+    // Do signup
+    if(!this.userService.signUp(this.email?.value, this.password?.value, this.confirmPassword?.value)) {
+      return false
     }
 
-    // Do signup
-
     // Use our new user to initialize their database entry
+
+
     return false;
   }
 }
