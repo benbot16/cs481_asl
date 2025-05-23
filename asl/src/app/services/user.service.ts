@@ -136,6 +136,10 @@ export class UserService {
 
   // Anon
   loginAnon() {
+    // Since anons can get here, we don't want them double-anoning
+    if(this.currentUser) {
+      this.router.navigate(['/', 'sign']);
+    }
     signInAnonymously(this.auth).then(() => {
       this.router.navigate(['/', 'sign']);
     });

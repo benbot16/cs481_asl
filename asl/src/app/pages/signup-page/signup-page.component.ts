@@ -14,7 +14,7 @@ export class SignupPageComponent {
   profileForm = new FormGroup({
     fname: new FormControl('', Validators.required),
     lname: new FormControl('', Validators.required),
-    age: new FormControl('', [Validators.required, Validators.pattern('/^[0-9]+$/')]),
+    age: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
@@ -52,6 +52,10 @@ export class SignupPageComponent {
     if(this.profileForm.value.password != this.profileForm.value.confirmPassword) {
       return false;
     }
+
+    // Do signup
+
+    // Use our new user to initialize their database entry
     return false;
   }
 }

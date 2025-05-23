@@ -4,10 +4,15 @@
     </div>
     <div class="min-w-screen sm:w-[50%] flex flex-col gap-5 items-center h-full gap-5">
         <div>
-            <img src="../../../assets/asllogo.png" class="w-[200px]" />
+            <img src="../../../assets/asllogo.png" class="w-[200px] m-auto" />
             <span class="text-navy-600 text-5xl font-light mt-5">Sign 2 Speak</span>
         </div>
         <form [formGroup]="profileForm" (ngSubmit)="doLogin()">
+          @if(this.loginFailed){
+          <p class="transition-all w-[400px] bg-red-100 shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
+          Invalid Credentials!
+          </p>
+          }
           <p>
           <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
           <input class="grow" type="email" formControlName="email" placeholder="Email Address" />
@@ -18,7 +23,7 @@
           <input class="grow" type="password" formControlName="password" placeholder="Password"/>
           </label>
           </p>
-          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit" [disabled]="!profileForm.valid" [title]="profileForm.valid ? '' : 'Input valid credentials!'">
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2" type="submit" [disabled]="!profileForm.valid" [title]="profileForm.valid ? '' : 'Input an email and password!'">
               <span class="text-slate-700 text-xl flex-grow">Sign in</span>
           </button>
           <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" (click)="this.goToSignUp()">
