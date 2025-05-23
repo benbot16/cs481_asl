@@ -21,6 +21,9 @@
           <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit" [disabled]="!profileForm.valid" [title]="profileForm.valid ? '' : 'Input valid credentials!'">
               <span class="text-slate-700 text-xl flex-grow">Sign in</span>
           </button>
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" (click)="this.goToSignUp()">
+              <span class="text-slate-700 text-xl flex-grow">Sign up</span>
+          </button>
         </form>
         <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" (click)="this.doLoginGoogle()">
             <img src="../../../assets/Google.png" class="w-8 m-2" />

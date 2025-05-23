@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import {RouterModule, Router } from '@angular/router';
 import {FormGroup, FormControl} from '@angular/forms';
 import {ReactiveFormsModule, Validators} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +18,12 @@ export class LoginPageComponent {
   });
   loginFailed = false;
   userService = inject(UserService);
+  router: Router = inject(Router);
   user$ = this.userService.user$;
+
+  goToSignUp() {
+    this.router.navigate(['/', 'signup'])
+  }
 
   doLogin() {
     if(!this.userService.login(this.profileForm.value.email, this.profileForm.value.password)) {

@@ -3,6 +3,7 @@ import {
   Auth,
   authState,
   signInWithRedirect,
+  signInWithPopup,
   signInWithEmailAndPassword,
   signInAnonymously,
   createUserWithEmailAndPassword,
@@ -87,6 +88,7 @@ export class UserService {
     if(!this.isAnonLoggedIn()) {
       createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
         const user = result.user;
+        this.router.navigate(['/', 'sign']);
         return true;
       }).catch((error) => {
         console.log('Sign up error: ' + error);
@@ -96,6 +98,7 @@ export class UserService {
       const cred = EmailAuthProvider.credential(email, password);
       linkWithCredential(this.auth.currentUser!!,  cred).then((newcred) => {
         const user = newcred.user;
+        this.router.navigate(['/', 'sign']);
       }).catch((error) => {
           console.log('Account upgrade error: ' + error);
         });
@@ -122,7 +125,7 @@ export class UserService {
 
   // OAuth
   loginGoogle() {
-    signInWithRedirect(this.auth, this.provider).then((result) => {
+    signInWithPopup(this.auth, this.provider).then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         this.router.navigate(['/', 'sign']);
         return credential;
