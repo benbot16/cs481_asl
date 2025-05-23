@@ -1,38 +1,34 @@
 <div class="min-h-[80vh] h-full w-full py-10 flex flex-wrap flex-col-reverse sm:flex-row items-center min-w-screen">
-    <div class="min-w-screen sm:w-[50%] h-full items-center m-auto">
-        <img src="../../../assets/asllogo.png" class="w-[650px] m-auto" />
-    </div>
-    <div class="min-w-screen sm:w-[50%] flex flex-col gap-5 items-center h-full gap-5">
+    <div class="min-w-screen sm:w-[100%] flex flex-col gap-5 items-center h-full gap-5">
         <div>
             <img src="../../../assets/asllogo.png" class="w-[200px] m-auto" />
             <span class="text-navy-600 text-5xl font-light mt-5">Sign Up Today!</span>
         </div>
         <form [formGroup]="profileForm" (ngSubmit)="doSignUp()">
-          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
-          <input class="grow" type="text" formControlName="fname" placeholder="First Name" />
-          </label>
-          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
-          <input class="grow" type="text" formControlName="lname" placeholder="Last Name" />
-          </label>
-          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
-          <input class="grow" type="text" formControlName="age" placeholder="Age" />
-          </label>
-          <p>
-          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
-          <input class="grow" type="email" formControlName="email" placeholder="Email Address" />
-          </label>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(fname?.invalid && (fname?.dirty || fname?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow {{(fname?.invalid && (fname?.dirty || fname?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="fname" placeholder="First Name" />
           </p>
-          <p>
-          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2" >
-          <input class="grow" type="password" formControlName="password" placeholder="Password"/>
-          </label>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(lname?.invalid && (lname?.dirty || lname?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow {{(lname?.invalid && (lname?.dirty || lname?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="lname" placeholder="Last Name" />
           </p>
-          <label class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{this.profileForm.value.password != this.profileForm.value.confirmPassword || confirmPassword?.invalid ? 'accent-red-500 bg-red-100' : ''}}" >
-          <input class="grow" type="password" formControlName="confirmPassword" placeholder="Confirm Password"/>
-          </label>
-          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit" [disabled]="profileForm.invalid" [title]="profileForm.valid ? '' : 'Input invalid!'">
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(age?.invalid && (age?.dirty || age?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow {{(age?.invalid && (age?.dirty || age?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="age" placeholder="Age" />
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(email?.invalid && (email?.dirty || email?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow {{(email?.invalid && (email?.dirty || email?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="email" formControlName="email" placeholder="Email Address" />
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(((password?.invalid || confirmPassword?.value != password?.value)) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow {{((password?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="password" formControlName="password" placeholder="Password"/>
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{((confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow" type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="{{((confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}"/>
+          </p>
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit" [disabled]="!profileForm.valid" [title]="profileForm.valid ? '' : 'Input invalid!'">
               <span class="text-slate-700 text-xl flex-grow">Sign up</span>
           </button>
         </form>
+        <p class="w-[400px] bg-grey text-xs shadow-md flex flex-wrap items-center rounded-lg p-2">
+          By signing up you indicate that you are 18 years of age or older and agree to our terms and conditions.
+        </p>
     </div>
 </div>
