@@ -35,7 +35,7 @@ import {
   limit,
   onSnapshot,
   DocumentData,
-  FieldValue,
+  FieldValue
 } from '@angular/fire/firestore';
 import {
   Storage,
@@ -45,13 +45,12 @@ import {
 } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 
-type ChatMessage = {
-  name: string | null,
-  profilePicUrl: string | null,
-  timestamp: FieldValue,
+type UserData = {
+  first: string | null,
+  last: string | null,
+  age: number | null,
   uid: string | null,
-  text?: string,
-  imageUrl?: string
+  messages: string[],
 };
 
 
@@ -77,19 +76,19 @@ export class UserService {
   }
 
   // Signup
-  signUp(email: string | null | undefined, password: string | null | undefined, confirm: string | null | undefined) {
+  signUp(email: string | null | undefined, password: string | null | undefined, confirm: string | null | undefined): User | null {
     if(!email || !password || !confirm) {
-      return false;
+      return null;
     }
     if(password != confirm) {
-      return false;
+      return null;
     }
 
     if(!this.isAnonLoggedIn()) {
       createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
         const user = result.user;
         this.router.navigate(['/', 'sign']);
-        return true;
+        return user;
       }).catch((error) => {
         console.log('Sign up error: ' + error);
       });
@@ -99,11 +98,12 @@ export class UserService {
       linkWithCredential(this.auth.currentUser!!,  cred).then((newcred) => {
         const user = newcred.user;
         this.router.navigate(['/', 'sign']);
+        return user;
       }).catch((error) => {
           console.log('Account upgrade error: ' + error);
         });
     }
-    return false;
+    return null;
   }
 
   // Login
@@ -163,6 +163,26 @@ export class UserService {
     }).catch((error) => {
       console.log('Sign out error: ' + error.code + "; " + error.message);
       });
+  }
+
+  async initUser(user: User | null, fname: string | null, lname: string | null, a: number | null) {
+    const userData: UserData = {
+      first: fname,
+      last: lname,
+      age: a,
+      uid: user?.uid as string,
+      messages: [],
+    }
+    if(!user || !fname || !lname || !a) {
+      return false;
+    }
+    try {
+      await setDoc(doc(this.firestore, "user_profiles", user?.uid), userData);
+      return true;
+    } catch (error) {
+      console.error("Error initializing user: ", error);
+      return false;
+    }
   }
 
   // Update a user's data

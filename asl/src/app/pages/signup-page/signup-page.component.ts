@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {ReactiveFormsModule, Validators } from '@angular/forms';
+import { User } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -49,13 +50,13 @@ export class SignupPageComponent {
 
   doSignUp() {
     // Do signup
-    if(!this.userService.signUp(this.email?.value, this.password?.value, this.confirmPassword?.value)) {
+    const user: User | null = this.userService.signUp(this.email?.value, this.password?.value, this.confirmPassword?.value);
+    if(!user) {
       return false
     }
 
-    // Use our new user to initialize their database entry
-
-
-    return false;
+    // Use our new user to initialize their database entry (we know we have a user)
+    this.userService.initUser(user, this.fname!.value, this.lname!.value, parseInt(this.age!.value!));
+    return true;
   }
 }

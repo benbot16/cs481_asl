@@ -14,7 +14,7 @@
                         <img class="w-10 h-10 rounded-full" [src]="user?.photoURL"
                             [alt]="user?.displayName" />
                         <span class="text-white text-xl whitespace-nowrap font-light px-4 lg:px-5 py-2 lg:py-2.5">
-                            {{user?.displayName}}
+                            {{!userService.isAnonLoggedIn() ? user?.displayName : "Anonymous"}}
                         </span>
                     </div>
                     }
