@@ -177,6 +177,8 @@ export class UserService {
       return false;
     }
     try {
+      await sendEmailVerification(user).catch((err) => console.error("Error sending email verification: ", err));
+      await updateProfile(user, {displayName: fname}).catch((err) => console.log("Error updating profile: ", err));
       await setDoc(doc(this.firestore, "user_profiles", user?.uid), userData);
       return true;
     } catch (error) {
