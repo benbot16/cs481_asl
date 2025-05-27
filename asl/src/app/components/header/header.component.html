@@ -23,13 +23,11 @@
                             <button class="text-gray-700 inline-flex items-center font-semibold">
                                 <img class="w-8 h-8" src="../../../assets/menu.svg" />
                             </button></div>
-                            <ul class="dropdown-menu absolute hidden bg-white w-48 p-1 right-2 shadow-xl rounded-lg">
+                            <ul class="dropdown-menu absolute hidden bg-white w-fit p-1 right-2 shadow-xl rounded-lg">
                                 <li class="bg-white flex flex-row gap-2 items-center px-4 py-4 rounded-lg">
-                                    <img class="w-10 h-10 rounded-full" [src]="user?.photoURL"
-                                        [alt]="user?.displayName" />
                                     <span
                                         class="text-navy-200 text-md whitespace-nowrap">
-                                        {{user?.displayName}}
+                                        {{userService.auth.currentUser?.displayName}}
                                     </span>
                                 </li>
                                 <li>

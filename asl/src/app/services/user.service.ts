@@ -14,6 +14,8 @@ import {
   User,
   EmailAuthProvider,
   linkWithCredential,
+  sendEmailVerification,
+  updateProfile,
 } from '@angular/fire/auth';
 import { map, switchMap, firstValueFrom, filter, Observable, Subscription } from 'rxjs';
 import {
@@ -62,7 +64,6 @@ export class UserService {
   auth: Auth = inject(Auth);
   router: Router = inject(Router);
   private provider = new GoogleAuthProvider();
-  LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif?a';
 
   // observable that is updated when the auth state changes
   user$ = user(this.auth);
@@ -107,11 +108,11 @@ export class UserService {
   }
 
   // Login
-  login(email: string | null | undefined, password: string | null | undefined) {
+  async login(email: string | null | undefined, password: string | null | undefined) {
     if(!email || !password) {
       return false;
     }
-    signInWithEmailAndPassword(this.auth, email, password).then((result) => {
+    await signInWithEmailAndPassword(this.auth, email, password).then((result) => {
       if(!result) {
         return false;
       }
@@ -177,6 +178,8 @@ export class UserService {
       return false;
     }
     try {
+      await sendEmailVerification(user).catch((err) => console.error("Error sending email verification: ", err));
+      await updateProfile(this.auth.currentUser!!, {displayName: fname}).catch((err) => console.log("Error updating profile: ", err));
       await setDoc(doc(this.firestore, "user_profiles", user?.uid), userData);
       return true;
     } catch (error) {

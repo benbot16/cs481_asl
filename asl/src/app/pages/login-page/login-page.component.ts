@@ -25,8 +25,9 @@ export class LoginPageComponent {
     this.router.navigate(['/', 'signup'])
   }
 
-  doLogin() {
-    if(!this.userService.login(this.profileForm.value.email, this.profileForm.value.password)) {
+  async doLogin() {
+    await this.userService.login(this.profileForm.value.email, this.profileForm.value.password)
+    if(this.userService.currentUser == null) {
       this.loginFailed = true;
     }
   }
