@@ -14,6 +14,8 @@ import {
   User,
   EmailAuthProvider,
   linkWithCredential,
+  sendEmailVerification,
+  updateProfile,
 } from '@angular/fire/auth';
 import { map, switchMap, firstValueFrom, filter, Observable, Subscription } from 'rxjs';
 import {
