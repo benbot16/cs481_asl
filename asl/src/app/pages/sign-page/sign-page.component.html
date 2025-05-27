@@ -2,11 +2,13 @@
 <div class="min-h-screen h-full w-full bg-navy-30">
     <!-- Content container with 3/4 width, centered with flex column layout -->
     <div class="w-3/4 bg-navy-10 min-h-screen h-full mx-auto flex flex-col flex-grow pb-56 overflow-auto">
-        <!-- Video container for webcam feed -->
-        <div class="w-full flex justify-center items-center p-4">
+        <!-- Video container for webcam feed with relative positioning for canvas overlay -->
+        <div class="w-full flex justify-center items-center p-4 relative">
             <!-- Video element with reference for accessing in TypeScript -->
             <!-- Uses autoplay and playsinline for continuous camera feed -->
             <video #videoElement autoplay playsinline class="w-full max-w-3xl h-auto rounded-lg shadow-lg"></video>
+            <!-- Canvas overlay for drawing hand landmarks -->
+            <canvas #canvasElement class="absolute top-0 left-0 w-full max-w-3xl h-auto rounded-lg"></canvas>
         </div>
         <!-- Container for displaying signed letters history -->
         <div class="w-full flex justify-center p-4">
@@ -16,7 +18,13 @@
                 <h3 class="text-lg font-semibold text-navy-600 mb-2">Signed Letters History</h3>
                 <!-- Display area for the recognized signed letters -->
                 <!-- Binds to signedLetters property from the component -->
-                <div class="text-navy-500 text-lg">{{signedLetters}}</div>
+                <div #outputText class="text-navy-500 text-lg">{{signedLetters}}</div>
+                <!-- Button to clear the signed letters history -->
+                <button *ngIf="signedLetters" 
+                        (click)="clearSignedLetters()" 
+                        class="mt-2 px-4 py-2 bg-navy-500 text-white rounded-lg hover:bg-navy-600 transition-colors">
+                    Clear
+                </button>
             </div>
         </div>
     </div>
@@ -25,20 +33,6 @@
     <!-- 
         Commented out section - appears to be for file upload and text messaging functionality
         This could be re-enabled if additional features are needed
-        <div class="flex-wrap flex w-5/6 mx-auto">
-            <input type="file" class="file-input hidden" (change)="this.uploadImage($event)" #fileUpload>
-            <div class="file-upload w-16 h-16 rounded-full bg-amber-800 my-3">
-                <button color="primary" class="upload-btn" (click)="fileUpload.click()">
-                    <img class="w-16 h-16" src="../../../assets/add.svg" alt="Upload image" />
-                </button>
-            </div>
-            <textarea
-                class="w-4/5 mx-auto h-16 rounded-3xl my-auto overflow-auto text-gray-900 dark:placeholder-gray-400 p-4"
-                placeholder="Write your thoughts here..." [(ngModel)]="this.text"></textarea>
-            <button class="w-16 h-16 rounded-full bg-amber-800 my-3" (click)="this.sendTextMessage()">
-                <img class="w-16 h-16" src="../../../assets/send.svg" alt="Send message" />
-            </button>
-        </div>
--->
+    -->
     </div>
 </div>
