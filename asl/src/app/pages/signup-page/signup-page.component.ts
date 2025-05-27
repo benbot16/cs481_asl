@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '@angular/fire/auth';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service'
+import { Router } from '@angular/router';;
 
 @Component({
   selector: 'app-signup-page',
@@ -12,6 +13,8 @@ import { UserService } from 'src/app/services/user.service';
   imports: [ReactiveFormsModule],
 })
 export class SignupPageComponent {
+  loginFailed = false;
+  router: Router = inject(Router);
   profileForm = new FormGroup({
     fname: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z]+')]),
     lname: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z]+')]),
@@ -48,15 +51,21 @@ export class SignupPageComponent {
   userService = inject(UserService);
   user$ = this.userService.user$;
 
-  doSignUp() {
+  async doSignUp() {
     // Do signup
-    const user: User | null = this.userService.signUp(this.email?.value, this.password?.value, this.confirmPassword?.value);
-    if(!user) {
-      return false
-    }
-
-    // Use our new user to initialize their database entry (we know we have a user)
-    this.userService.initUser(user, this.fname!.value, this.lname!.value, parseInt(this.age!.value!));
-    return true;
+    console.log(this.email?.value)
+    this.userService.signUp(this.email?.value, this.password?.value, this.confirmPassword?.value).then((user) => {
+      user = this.userService.auth.currentUser
+      if(!user) {
+        this.loginFailed = true;
+        return false
+      }
+      // Use our new user to initialize their database entry (we know we have a user)
+      this.userService.initUser(this.fname!.value, this.lname!.value, parseInt(this.age!.value!)).then(() => {
+        this.router.navigate(['/', 'sign']);
+        return true;
+      });
+      return true;
+    });
   }
 }

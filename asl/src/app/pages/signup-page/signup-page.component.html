@@ -5,6 +5,11 @@
             <span class="text-navy-600 text-5xl font-light mt-5">Sign Up Today!</span>
         </div>
         <form [formGroup]="profileForm" (ngSubmit)="doSignUp()">
+          @if(this.loginFailed){
+          <p class="transition-all w-[400px] bg-red-100 shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
+          Signup failed. Please input a valid email and password.
+          </p>
+          }
           <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(fname?.invalid && (fname?.dirty || fname?.touched)) ? 'bg-red-100' : 'bg-white'}}">
           <input class="grow {{(fname?.invalid && (fname?.dirty || fname?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="fname" placeholder="First Name" />
           </p>
@@ -18,10 +23,10 @@
           <input class="grow {{(email?.invalid && (email?.dirty || email?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="email" formControlName="email" placeholder="Email Address" />
           </p>
           <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(((password?.invalid || confirmPassword?.value != password?.value)) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}">
-          <input class="grow {{((password?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="password" formControlName="password" placeholder="Password"/>
+          <input class="grow {{((password?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="password" formControlName="password" placeholder="Password" title="Your password must be at least 10 characters long and contain at least one of the following: An uppercase letter, a lowercase letter, and a number."/>
           </p>
           <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{((confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}">
-          <input class="grow" type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="{{((confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}"/>
+          <input class="grow" type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="{{((confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}" title=" Your password must be at least 10 characters long and contain at least one of the following: An uppercase letter, a lowercase letter, and a number."/>
           </p>
           <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" type="submit" [disabled]="!profileForm.valid" [title]="profileForm.valid ? '' : 'Input invalid!'">
               <span class="text-slate-700 text-xl flex-grow">Sign up</span>

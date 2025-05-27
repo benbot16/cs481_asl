@@ -51,7 +51,6 @@ type UserData = {
   first: string | null,
   last: string | null,
   age: number | null,
-  uid: string | null,
   messages: string[],
 };
 
@@ -77,18 +76,19 @@ export class UserService {
   }
 
   // Signup
-  signUp(email: string | null | undefined, password: string | null | undefined, confirm: string | null | undefined): User | null {
+  async signUp(email: string | null | undefined, password: string | null | undefined, confirm: string | null | undefined): Promise<User | null> {
     if(!email || !password || !confirm) {
+      console.log("Missing email/password")
       return null;
     }
     if(password != confirm) {
+      console.log("Password doesn't match")
       return null;
     }
 
     if(!this.isAnonLoggedIn()) {
-      createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
+      await createUserWithEmailAndPassword(this.auth, email, password).then((result) => {
         const user = result.user;
-        this.router.navigate(['/', 'sign']);
         return user;
       }).catch((error) => {
         console.log('Sign up error: ' + error);
@@ -96,13 +96,12 @@ export class UserService {
     } else {
       // anon is logged in, so currentUser exists
       const cred = EmailAuthProvider.credential(email, password);
-      linkWithCredential(this.auth.currentUser!!,  cred).then((newcred) => {
+      await linkWithCredential(this.auth.currentUser!!,  cred).then((newcred) => {
         const user = newcred.user;
-        this.router.navigate(['/', 'sign']);
         return user;
       }).catch((error) => {
           console.log('Account upgrade error: ' + error);
-        });
+      });
     }
     return null;
   }
@@ -166,21 +165,21 @@ export class UserService {
       });
   }
 
-  async initUser(user: User | null, fname: string | null, lname: string | null, a: number | null) {
+  async initUser(fname: string | null, lname: string | null, a: number | null) {
+    let ourUser = this.auth.currentUser!!
     const userData: UserData = {
       first: fname,
       last: lname,
       age: a,
-      uid: user?.uid as string,
       messages: [],
     }
     if(!user || !fname || !lname || !a) {
       return false;
     }
     try {
-      await sendEmailVerification(user).catch((err) => console.error("Error sending email verification: ", err));
+      await sendEmailVerification(ourUser).catch((err) => console.error("Error sending email verification: ", err));
       await updateProfile(this.auth.currentUser!!, {displayName: fname}).catch((err) => console.log("Error updating profile: ", err));
-      await setDoc(doc(this.firestore, "user_profiles", user?.uid), userData);
+      await setDoc(doc(this.firestore, "user_profiles", ourUser?.uid), userData);
       return true;
     } catch (error) {
       console.error("Error initializing user: ", error);
@@ -201,6 +200,4 @@ export class UserService {
   getAge(path: string) {}
 
   getQueryHistory(path: string) {}
-
-  getUUID(path: string) {}
 }
