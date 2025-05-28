@@ -6,9 +6,9 @@
         <div class="w-full flex justify-center items-center p-4 relative">
             <!-- Video element with reference for accessing in TypeScript -->
             <!-- Uses autoplay and playsinline for continuous camera feed -->
-            <video #videoElement autoplay playsinline class="w-full max-w-3xl h-auto rounded-lg shadow-lg"></video>
+            <video #videoElement autoplay playsinline class="w-full max-h-[500px] rounded-lg shadow-lg"></video>
             <!-- Canvas overlay for drawing hand landmarks -->
-            <canvas #canvasElement class="absolute top-0 left-0 w-full max-w-3xl h-auto rounded-lg"></canvas>
+            <canvas #canvasElement class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
         </div>
         <!-- Container for displaying signed letters history -->
         <div class="w-full flex justify-center p-4">
