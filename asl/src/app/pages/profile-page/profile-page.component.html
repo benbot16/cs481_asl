@@ -1,0 +1,18 @@
+<div class="min-h-[80vh] h-full w-full py-10 flex flex-wrap flex-col-reverse sm:flex-row items-center min-w-screen">
+    <div class="min-w-screen sm:w-[50%] h-full items-center m-auto">
+        <img src="../../../assets/asllogo.png" class="w-[650px] m-auto" />
+        <p> American Sign Language (ASL) serves as the primary language for the deaf
+        community in America. ASL uses hand gestures for communication. Sign2Speak
+        allows users to translate hand gestures to written and spoken English in real time.</p>
+    </div>
+    <div class="min-w-screen sm:w-[50%] flex flex-col gap-5 items-center h-full gap-5">
+        <div>
+            <img src="../../../assets/asllogo.png" class="w-[200px] m-auto" />
+            <span class="text-navy-600 text-5xl font-light mt-5">Sign 2 Speak</span>
+        </div>
+        <form [formGroup]="profileForm" (ngSubmit)="modifyProfile()">
+
+        </form>
+
+    </div>
+</div>

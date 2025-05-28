@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignPageComponent } from './pages/sign-page/sign-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { UserService } from './services/user.service';
 import { LoginAuthGuard } from './routing/login-auth-guard.component';
 
@@ -40,4 +41,9 @@ export const routes: Routes = [
     component: SignupPageComponent,
     canActivate: [LoginAuthGuard],
   },
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [AuthGuard],
+  }
 ]
