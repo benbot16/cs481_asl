@@ -1,5 +1,5 @@
 // Import necessary Angular modules and components
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgIf, NgClass } from '@angular/common';
 import { Component, ElementRef, ViewChild, inject, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { DocumentData } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ declare const Camera: any;
   templateUrl: './sign-page.component.html', // Path to HTML template
   styleUrls: ['./sign-page.component.css'], // Path to CSS styles
   standalone: true, // Indicates this is a standalone component (Angular 14+)
-  imports: [AsyncPipe, FormsModule, NgIf] // Required imports for template usage
+  imports: [AsyncPipe, FormsModule, NgIf, NgClass] // Required imports for template usage
 })
 export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Inject the UserService for authentication and user data
@@ -31,6 +31,18 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   text = '';
   // Property to store recognized ASL letters
   signedLetters = '';
+  // Property to store letter history
+  letterHistory: string[] = [];
+  // Property to store the parsed sentence
+  parsedSentence = '';
+  // Property to track if we're actively collecting letters
+  isCollectingLetters = false;
+  // Time threshold for distinguishing between letters (in milliseconds)
+  private readonly LETTER_TIMEOUT = 1500;
+  // Timer for letter collection
+  private letterTimer: any = null;
+  // Previous letter detected
+  private previousLetter = '';
 
   // References to DOM elements
   @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
@@ -228,7 +240,11 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       // Set the recognized letter
-      this.signedLetters = `${labels[gestureIndex]}`;
+      const recognizedLetter = labels[gestureIndex];
+      this.signedLetters = recognizedLetter;
+
+      // Handle letter recognition for history
+      this.handleLetterRecognition(recognizedLetter);
 
       // Draw hand landmarks
       for (const landmarks of results.multiHandLandmarks) {
@@ -287,6 +303,81 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Clear the signed letters
   clearSignedLetters(): void {
     this.signedLetters = '';
+    this.letterHistory = [];
+    this.parsedSentence = '';
+    this.previousLetter = '';
+    this.stopLetterCollection();
+  }
+
+  // Handle letter recognition for history
+  private handleLetterRecognition(letter: string): void {
+    // If the letter is the same as the previous one, reset the timer but don't add it again
+    if (letter === this.previousLetter) {
+      this.resetLetterTimer();
+      return;
+    }
+    
+    this.previousLetter = letter;
+    
+    // Add letter to history
+    if (this.isCollectingLetters) {
+      this.letterHistory.push(letter);
+      this.resetLetterTimer();
+    }
+  }
+
+  // Start collecting letters
+  startLetterCollection(): void {
+    this.isCollectingLetters = true;
+    // If we already have letters detected, start with those
+    if (this.signedLetters && this.signedLetters !== "No hand detected.") {
+      this.letterHistory.push(this.signedLetters);
+      this.previousLetter = this.signedLetters;
+    }
+  }
+
+  // Stop collecting letters
+  stopLetterCollection(): void {
+    this.isCollectingLetters = false;
+    clearTimeout(this.letterTimer);
+    this.letterTimer = null;
+  }
+
+  // Reset the letter timer
+  private resetLetterTimer(): void {
+    clearTimeout(this.letterTimer);
+    this.letterTimer = setTimeout(() => {
+      // Add a space after the timeout period
+      if (this.isCollectingLetters && this.letterHistory.length > 0) {
+        this.letterHistory.push(' ');
+        this.previousLetter = '';
+      }
+    }, this.LETTER_TIMEOUT);
+  }
+
+  // Parse the letters into a sentence
+  parseLetters(): void {
+    this.parsedSentence = this.letterHistory.join('');
+  }
+
+  // Add a space manually
+  addSpace(): void {
+    this.letterHistory.push(' ');
+    this.previousLetter = '';
+  }
+
+  // Delete the last character
+  deleteLastChar(): void {
+    this.letterHistory.pop();
+  }
+
+  // Toggle letter collection
+  toggleLetterCollection(): void {
+    if (this.isCollectingLetters) {
+      this.stopLetterCollection();
+    } else {
+      this.startLetterCollection();
+    }
   }
 }
 
