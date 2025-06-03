@@ -126,7 +126,7 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Configure Hands options
     this.hands.setOptions({
-      maxNumHands: 1,
+      maxNumHands: 2,
       modelComplexity: 1,
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5,
@@ -316,9 +316,9 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
       this.resetLetterTimer();
       return;
     }
-    
+
     this.previousLetter = letter;
-    
+
     // Add letter to history
     if (this.isCollectingLetters) {
       this.letterHistory.push(letter);
