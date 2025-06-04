@@ -37,10 +37,18 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   parsedSentence = '';
   // Property to track if we're actively collecting letters
   isCollectingLetters = false;
-  // Time threshold for distinguishing between letters (in milliseconds)
-  private readonly LETTER_TIMEOUT = 1500;
-  // Timer for letter collection
-  private letterTimer: any = null;
+  // Property to store saved sentences
+  savedSentences: string[] = [];
+  // Storage key for localStorage
+  private readonly STORAGE_KEY = 'ASL_SAVED_SENTENCES';
+  // Property to control saved sentences modal visibility
+  showSavedSentences = false;
+  // For debugging
+  savedSentencesCount = 0;
+  // Property for notification display
+  showNotification = false;
+  // Property for notification message
+  notificationMessage = '';
   // Previous letter detected
   private previousLetter = '';
 
@@ -57,6 +65,11 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Lifecycle hook that runs when the component initializes
   async ngOnInit() {
+    console.log('SignPageComponent initializing');
+
+    // Initialize saved sentences
+    this.initializeSavedSentences();
+
     // Load required scripts dynamically
     await this.loadScripts();
 
@@ -65,6 +78,45 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Load the custom TensorFlow.js model
     this.loadModel();
+  }
+
+  // Initialize saved sentences from localStorage
+  private initializeSavedSentences(): void {
+    try {
+      console.log('Initializing saved sentences');
+      this.savedSentences = []; // Ensure it starts empty
+
+      const savedData = localStorage.getItem(this.STORAGE_KEY);
+      console.log('Raw data from localStorage:', savedData);
+
+      if (savedData && savedData.trim() !== '') {
+        const parsedData = JSON.parse(savedData);
+        console.log('Parsed data type:', typeof parsedData, Array.isArray(parsedData));
+
+        if (Array.isArray(parsedData)) {
+          // Create a fresh array to ensure change detection
+          this.savedSentences = [...parsedData];
+          this.savedSentencesCount = this.savedSentences.length;
+          console.log('🟢 Successfully loaded saved sentences:', this.savedSentences);
+          console.log('Individual sentences:');
+          this.savedSentences.forEach((s, i) => console.log(`  ${i+1}. "${s}"`));
+        } else {
+          console.warn('❌ Stored data is not an array, resetting to empty array');
+          this.savedSentences = [];
+          this.savedSentencesCount = 0;
+        }
+      } else {
+        console.log('ℹ️ No saved sentences found in localStorage');
+        this.savedSentences = [];
+        this.savedSentencesCount = 0;
+      }
+    } catch (error) {
+      console.error('❌ Error loading saved sentences:', error);
+      this.savedSentences = [];
+      this.savedSentencesCount = 0;
+      // Reset corrupted storage
+      localStorage.removeItem(this.STORAGE_KEY);
+    }
   }
 
   // After the view is initialized, set up the canvas
@@ -239,11 +291,11 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
         this.signedLetters = "";
       }
 
-      // Set the recognized letter
+      // Set the recognized letter - this only updates the UI, not the history
       const recognizedLetter = labels[gestureIndex];
       this.signedLetters = recognizedLetter;
 
-      // Handle letter recognition for history
+      // Just track the current letter - don't add to history automatically
       this.handleLetterRecognition(recognizedLetter);
 
       // Draw hand landmarks
@@ -311,64 +363,214 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Handle letter recognition for history
   private handleLetterRecognition(letter: string): void {
-    // If the letter is the same as the previous one, reset the timer but don't add it again
+    // If the letter is the same as the previous one, don't do anything
     if (letter === this.previousLetter) {
-      this.resetLetterTimer();
       return;
     }
 
+    // Update the previous letter reference - only tracking for display purposes
     this.previousLetter = letter;
 
-    // Add letter to history
-    if (this.isCollectingLetters) {
-      this.letterHistory.push(letter);
-      this.resetLetterTimer();
-    }
+    // We don't automatically add letters to history anymore
+    // User must explicitly press "Confirm Letter" button
   }
 
   // Start collecting letters
   startLetterCollection(): void {
     this.isCollectingLetters = true;
-    // If we already have letters detected, start with those
-    if (this.signedLetters && this.signedLetters !== "No hand detected.") {
-      this.letterHistory.push(this.signedLetters);
-      this.previousLetter = this.signedLetters;
-    }
+    console.log('Started collecting letters - use Confirm Letter to add to history');
   }
 
   // Stop collecting letters
   stopLetterCollection(): void {
     this.isCollectingLetters = false;
-    clearTimeout(this.letterTimer);
-    this.letterTimer = null;
+    console.log('Stopped collecting letters');
   }
 
-  // Reset the letter timer
-  private resetLetterTimer(): void {
-    clearTimeout(this.letterTimer);
-    this.letterTimer = setTimeout(() => {
-      // Add a space after the timeout period
-      if (this.isCollectingLetters && this.letterHistory.length > 0) {
-        this.letterHistory.push(' ');
-        this.previousLetter = '';
-      }
-    }, this.LETTER_TIMEOUT);
-  }
-
-  // Parse the letters into a sentence
-  parseLetters(): void {
+  // Update the parsed sentence
+  private parseSentence(): void {
     this.parsedSentence = this.letterHistory.join('');
+  }
+
+  // Save the current sentence to the saved sentences list
+  saveSentence(): void {
+    if (this.parsedSentence && this.parsedSentence.trim() !== '') {
+      console.log('Saving sentence:', this.parsedSentence);
+
+      // Add the current sentence to the saved sentences array
+      this.savedSentences = [...this.savedSentences, this.parsedSentence];
+
+      // Update counter
+      this.savedSentencesCount = this.savedSentences.length;
+
+      // Save to localStorage
+      this.updateLocalStorage();
+
+      // Show notification
+      this.showNotificationMessage('Sentence saved successfully!');
+
+      console.log('Updated saved sentences:', this.savedSentences);
+      console.log('Total saved sentences:', this.savedSentences.length);
+    }
+  }
+
+  // Update localStorage with saved sentences
+  private updateLocalStorage(): void {
+    try {
+      const jsonData = JSON.stringify(this.savedSentences);
+      localStorage.setItem(this.STORAGE_KEY, jsonData);
+      console.log('Saved to localStorage:', jsonData);
+      this.savedSentencesCount = this.savedSentences.length;
+
+      // Verify storage was successful
+      const verification = localStorage.getItem(this.STORAGE_KEY);
+      console.log('Verification from localStorage:', verification);
+      if (verification !== jsonData) {
+        console.warn('⚠️ Storage verification failed - stored data doesn\'t match what we tried to save');
+      }
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+    }
+  }
+
+  // Toggle the saved sentences modal
+  toggleSavedSentences(): void {
+    // Always reload from localStorage when opening modal
+    if (!this.showSavedSentences) {
+      console.log('Opening saved sentences modal - reloading data');
+      this.loadAllSavedSentences();
+    }
+
+    this.showSavedSentences = !this.showSavedSentences;
+    console.log('Showing saved sentences modal:', this.showSavedSentences);
+    if (this.showSavedSentences) {
+      console.log('Current saved sentences array:', JSON.stringify(this.savedSentences));
+      console.log('Count:', this.savedSentences.length);
+
+      // Log each sentence for debugging
+      if (this.savedSentences && this.savedSentences.length > 0) {
+        console.log('Individual saved sentences:');
+        this.savedSentences.forEach((sentence, index) => {
+          console.log(`  ${index+1}: "${sentence}"`);
+        });
+      } else {
+        console.log('No saved sentences to display');
+      }
+    }
+  }
+
+  // Load all saved sentences - can be called anytime to refresh data
+  loadAllSavedSentences(): void {
+    try {
+      const savedData = localStorage.getItem(this.STORAGE_KEY);
+      console.log('Loading saved sentences, raw data:', savedData);
+
+      if (savedData && savedData.trim() !== '') {
+        try {
+          const parsedData = JSON.parse(savedData);
+          if (Array.isArray(parsedData)) {
+            console.log('Loaded array data:', parsedData);
+            // Force creation of new array reference for Angular change detection
+            this.savedSentences = [...parsedData];
+            this.savedSentencesCount = this.savedSentences.length;
+          } else {
+            console.warn('Saved data is not an array');
+            this.savedSentences = [];
+            this.savedSentencesCount = 0;
+          }
+        } catch (parseError) {
+          console.error('Error parsing saved sentences:', parseError);
+          this.savedSentences = [];
+          this.savedSentencesCount = 0;
+        }
+      } else {
+        console.log('No saved sentences in localStorage');
+        this.savedSentences = [];
+        this.savedSentencesCount = 0;
+      }
+    } catch (error) {
+      console.error('Error loading saved sentences:', error);
+      this.savedSentences = [];
+      this.savedSentencesCount = 0;
+    }
+  }
+
+  // Delete a saved sentence
+  deleteSavedSentence(index: number): void {
+    console.log('Deleting sentence at index:', index);
+
+    if (index >= 0 && index < this.savedSentences.length) {
+      // Remove the sentence at the specified index
+      const updatedSentences = [...this.savedSentences];
+      updatedSentences.splice(index, 1);
+      this.savedSentences = updatedSentences;
+
+      // Update localStorage
+      this.updateLocalStorage();
+
+      // Show notification
+      this.showNotificationMessage('Sentence deleted');
+
+      console.log('Sentence deleted. Remaining:', this.savedSentences.length);
+    } else {
+      console.error('Invalid index for deletion:', index);
+    }
+  }
+
+  // Clear all saved sentences
+  clearStorage(): void {
+    console.log('Clearing all saved sentences');
+    this.savedSentences = [];
+    this.savedSentencesCount = 0;
+    localStorage.removeItem(this.STORAGE_KEY);
+    this.showNotificationMessage('All sentences cleared');
+  }
+
+  // Show notification message for a limited time
+  private showNotificationMessage(message: string): void {
+    this.notificationMessage = message;
+    this.showNotification = true;
+
+    // Auto-hide after 3 seconds
+    setTimeout(() => {
+      this.showNotification = false;
+    }, 3000);
+  }
+
+  // Confirm the current letter and add it to the history
+  confirmLetter(): void {
+    if (this.signedLetters && this.signedLetters !== "No hand detected." && this.isCollectingLetters) {
+      // Add the current recognized letter to the history
+      this.letterHistory.push(this.signedLetters);
+      console.log(`Letter confirmed: ${this.signedLetters}`);
+
+      // Reset previous letter to allow confirming the same letter again if needed
+      this.previousLetter = '';
+
+      // Update parsed sentence
+      this.parseSentence();
+    }
   }
 
   // Add a space manually
   addSpace(): void {
-    this.letterHistory.push(' ');
-    this.previousLetter = '';
+    if (this.isCollectingLetters) {
+      this.letterHistory.push(' ');
+      this.previousLetter = ''; // Reset previous letter after adding space
+
+      // Update parsed sentence
+      this.parseSentence();
+    }
   }
 
   // Delete the last character
   deleteLastChar(): void {
-    this.letterHistory.pop();
+    if (this.letterHistory.length > 0) {
+      this.letterHistory.pop();
+
+      // Update parsed sentence
+      this.parseSentence();
+    }
   }
 
   // Toggle letter collection
