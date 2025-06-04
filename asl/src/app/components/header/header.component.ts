@@ -20,6 +20,6 @@ export class HeaderComponent {
   }
 
   goToProfile() {
-    this.router.navigate(['/', 'profile'])
+    this.router.navigate(['/profile']);
   }
 }

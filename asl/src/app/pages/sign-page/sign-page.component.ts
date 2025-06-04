@@ -193,7 +193,7 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private async loadModel(): Promise<void> {
     try {
       this.customModel = await tf.loadLayersModel(
-        "https://raw.githubusercontent.com/benbot16/cs481_asl/refs/heads/fb_web/asl/src/app/model.json"
+        "https://raw.githubusercontent.com/benbot16/cs481_asl/refs/heads/fb_web/asl/src/app/model1.json"
       );
       console.log('Custom model loaded successfully');
     } catch (error) {
@@ -284,7 +284,7 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
       const gestureIndex = Array.from(predict).indexOf(gesture);
 
       // Map prediction to ASL letter
-      const labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+      const labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
       // Update the output text
       if (this.outputText.nativeElement.innerText === "No hand detected.") {

@@ -12,7 +12,7 @@
                     @if(user?.photoURL) {
                     <div class="hidden sm:flex flex-wrap items-center content-center text-white">
                         <img class="w-10 h-10 rounded-full" [src]="user?.photoURL"
-                            [alt]="user?.displayName">
+                            [alt]="" />
                         <span class="text-white text-xl whitespace-nowrap font-light px-4 lg:px-5 py-2 lg:py-2.5">
                             {{!userService.isAnonLoggedIn() ? user?.displayName : "Anonymous"}}
                         </span>
@@ -33,7 +33,7 @@
                                 @if(!userService.isAnonLoggedIn()) {
                                 <li>
                                     <a class="bg-white hover:bg-navy-20 rounded-md py-3 px-4 block whitespace-no-wrap text-navy-500 font-semibold"
-                                        href="/" (click)="this.goToProfile()">
+                                        href="/profile">
                                         Profile
                                     </a>
                                 </li>
