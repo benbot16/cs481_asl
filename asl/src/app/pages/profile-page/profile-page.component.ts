@@ -42,15 +42,7 @@ export class ProfilePageComponent {
   });
 
   constructor() {
-    this.userService.getFirstName().then((data) => {
-      this.first_name = data;
-    });
-    this.userService.getLastName().then((data) => {
-      this.last_name = data;
-    });
-    this.userService.getAge().then((data) => {
-      this.age_a = data;
-    });
+    this.update()
   }
 
   get fname() {
@@ -94,5 +86,18 @@ export class ProfilePageComponent {
     var ag = (this.age?.dirty && this.age?.valid ? parseInt(this.age.value!!) : null);
     var mail = (this.email?.dirty && this.email?.valid ? this.email.value : null);
     this.userService.updateData(fn, ln, ag, mail, this.password?.value, this.confirmPassword?.value);
+    this.update();
+  }
+
+  update() {
+    this.userService.getFirstName().then((data) => {
+      this.first_name = data;
+    });
+    this.userService.getLastName().then((data) => {
+      this.last_name = data;
+    });
+    this.userService.getAge().then((data) => {
+      this.age_a = data;
+    });
   }
 }
