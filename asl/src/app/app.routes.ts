@@ -26,6 +26,12 @@ export const routes: Routes = [
     data: { authGuardPipe: redirectLoggedInToHome },
   },
   {
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
     path: 'login',
     component: LoginPageComponent,
     canActivate: [LoginAuthGuard],
@@ -41,9 +47,4 @@ export const routes: Routes = [
     component: SignupPageComponent,
     canActivate: [LoginAuthGuard],
   },
-  {
-    path: 'profile',
-    component: ProfilePageComponent,
-    canActivate: [AuthGuard],
-  }
 ]

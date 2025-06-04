@@ -16,6 +16,7 @@ import {
   linkWithCredential,
   sendEmailVerification,
   updateProfile,
+  updateEmail,
 } from '@angular/fire/auth';
 import { map, switchMap, firstValueFrom, filter, Observable, Subscription } from 'rxjs';
 import {
@@ -51,7 +52,6 @@ type UserData = {
   first: string | null,
   last: string | null,
   age: number | null,
-  messages: string[],
 };
 
 
@@ -171,7 +171,6 @@ export class UserService {
       first: fname,
       last: lname,
       age: a,
-      messages: [],
     }
     if(!user || !fname || !lname || !a) {
       return false;
@@ -188,16 +187,60 @@ export class UserService {
   }
 
   // Update a user's data
-  async updateData(path: string, data: any) {}
+  async updateData(fname: string | null, lname: string | null, a: number | null, email: string | null, password: string | null | undefined, confirm: string | null | undefined): Promise<boolean | null> {
+    if(!password || !confirm || password != confirm) {
+      return false
+    }
+
+    if(email != null) {
+      await updateEmail(this.auth.currentUser!!, email).catch((err) => console.log("Error updating email: ", err));
+    }
+
+    const userData: UserData = {
+      first: fname,
+      last: lname,
+      age: a,
+    }
+    await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
+    return true;
+  }
 
   // Delete a user's data
-  async deleteData(path: string) {}
+  async deleteData() {
+  }
 
-  getFirstName(path: string) {}
+  async getFirstName(): Promise<string> {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+    if(doc_data) {
+      console.log(doc_data["first"]);
+      return doc_data["first"];
+    } else {
+      return "";
+    }
+  }
 
-  getLastName(path: string) {}
 
-  getAge(path: string) {}
+  async getLastName(): Promise<string> {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+    if(doc_data) {
+      return doc_data["last"];
+    } else {
+      return "";
+    }
+  }
 
-  getQueryHistory(path: string) {}
+  async getAge(): Promise<number> {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+    if(doc_data) {
+      return doc_data["age"];
+    } else {
+      return 0;
+    }
+  }
 }
