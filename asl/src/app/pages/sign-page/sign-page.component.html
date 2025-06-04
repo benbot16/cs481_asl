@@ -2,6 +2,10 @@
 <div class="min-h-screen h-full w-full bg-navy-30">
     <!-- Content container with 3/4 width, centered with flex column layout -->
     <div class="w-3/4 bg-navy-10 min-h-screen h-full mx-auto flex flex-col flex-grow pb-56 overflow-auto">
+        <!-- Section title -->
+        <div class="w-full text-center mt-4">
+            <h2 class="text-2xl font-bold text-navy-600">ASL Sign Language Recognition</h2>
+        </div>
         <!-- Video container for webcam feed with relative positioning for canvas overlay -->
         <div class="w-full flex justify-center items-center p-4 relative">
             <!-- Video element with reference for accessing in TypeScript -->
@@ -10,83 +14,190 @@
             <!-- Canvas overlay for drawing hand landmarks -->
             <canvas #canvasElement class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
         </div>
-        <!-- Container for displaying signed letters history -->
+        <!-- Container for displaying current letter and sentence -->
                 <div class="w-full flex justify-center p-4">
                     <!-- White box with shadow containing the signed letters -->
-                    <div class="w-full max-w-3xl bg-white rounded-lg shadow-lg p-4 max-h-48 overflow-y-auto">
-                        <!-- Title for the signed letters section -->
-                        <h3 class="text-lg font-semibold text-navy-600 mb-2">Signed Letters History</h3>
+                    <div class="w-full max-w-3xl bg-white rounded-lg shadow-lg p-4 overflow-y-auto">
                         <!-- Display area for the recognized signed letters -->
                         <!-- Binds to signedLetters property from the component -->
-                        <div #outputText class="text-navy-500 text-lg">Current Letter: {{signedLetters}}</div>
-                
-                        <!-- Display area for the letter history -->
-                        <div class="text-navy-500 text-lg mt-2" *ngIf="letterHistory.length > 0">
-                            <h4 class="text-md font-semibold text-navy-600 mb-1">Collected Letters:</h4>
-                            <div class="border p-2 rounded-lg bg-navy-10 min-h-[40px]">
-                                <span *ngFor="let letter of letterHistory" 
-                                      class="inline-block" 
-                                      [ngClass]="{'px-1': letter === ' ', 'bg-navy-50 rounded': letter === ' '}">
-                                    {{letter}}
-                                </span>
+                        <div #outputText class="flex items-center justify-center mb-3">
+                            <div class="text-center">
+                                <div class="text-navy-600 font-medium mb-1">Currently Detected</div>
+                                <div class="text-3xl font-bold px-5 py-3 bg-green-100 rounded-lg shadow-sm min-w-[60px] min-h-[60px]">
+                                    {{signedLetters || '?'}}
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Display area for the parsed sentence -->
-                        <div class="text-navy-500 text-lg mt-2" *ngIf="parsedSentence">
-                            <h4 class="text-md font-semibold text-navy-600 mb-1">Parsed Sentence:</h4>
-                            <div class="border p-2 rounded-lg bg-navy-10">
-                                {{parsedSentence}}
+                        <!-- Display area for the sentence -->
+                        <div class="text-navy-500 text-lg mt-4">
+                            <h4 class="text-md font-semibold text-navy-600 mb-1">Your Sentence:</h4>
+                            <div class="border p-3 rounded-lg bg-navy-10 text-xl font-medium min-h-[60px]">
+                                {{parsedSentence || 'Start collecting letters to build your sentence'}}
                             </div>
                         </div>
-                
+
                         <!-- Controls for letter collection -->
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <!-- Button to toggle letter collection -->
-                            <button (click)="toggleLetterCollection()" 
-                                    class="px-4 py-2 rounded-lg transition-colors"
-                                    [ngClass]="isCollectingLetters ? 
-                                        'bg-red-500 hover:bg-red-600 text-white' : 
-                                        'bg-green-500 hover:bg-green-600 text-white'">
-                                {{isCollectingLetters ? 'Stop Collecting' : 'Start Collecting'}}
-                            </button>
-                    
-                            <!-- Button to add space manually -->
-                            <button (click)="addSpace()" 
-                                    [disabled]="!isCollectingLetters"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                Add Space
-                            </button>
-                    
-                            <!-- Button to delete last character -->
-                            <button (click)="deleteLastChar()" 
-                                    [disabled]="letterHistory.length === 0"
-                                    class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                Delete Last
-                            </button>
-                    
-                            <!-- Button to parse letters into sentence -->
-                            <button (click)="parseLetters()" 
-                                    [disabled]="letterHistory.length === 0"
-                                    class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                Parse Sentence
-                            </button>
-                    
-                            <!-- Button to clear all -->
-                            <button *ngIf="signedLetters || letterHistory.length > 0" 
-                                    (click)="clearSignedLetters()" 
-                                    class="px-4 py-2 bg-navy-500 text-white rounded-lg hover:bg-navy-600 transition-colors">
-                                Clear All
-                            </button>
+                        <div class="mt-6 flex flex-col gap-3">
+                            <!-- Primary controls -->
+                            <div class="flex justify-center gap-3">
+                                <!-- Button to toggle letter collection -->
+                                <button (click)="toggleLetterCollection()"
+                                        class="px-5 py-3 rounded-lg transition-colors text-lg font-medium"
+                                        [ngClass]="isCollectingLetters ?
+                                            'bg-red-500 hover:bg-red-600 text-white' :
+                                            'bg-green-500 hover:bg-green-600 text-white'">
+                                    {{isCollectingLetters ? '⏹️ Stop' : '▶️ Start'}}
+                                </button>
+
+                                <!-- Button to confirm the current letter -->
+                                <button (click)="confirmLetter()"
+                                        [disabled]="!isCollectingLetters || !signedLetters || signedLetters === 'No hand detected.'"
+                                        class="px-5 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg font-medium">
+                                    ✅ Add Letter
+                                </button>
+                            </div>
+
+                            <!-- Secondary controls -->
+                            <div class="flex justify-center gap-3">
+                                <!-- Button to add space manually -->
+                                <button (click)="addSpace()"
+                                        [disabled]="!isCollectingLetters"
+                                        class="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Add Space
+                                </button>
+
+                                <!-- Button to delete last character -->
+                                <button (click)="deleteLastChar()"
+                                        [disabled]="letterHistory.length === 0"
+                                        class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Delete Last
+                                </button>
+
+                                <!-- Button to clear all -->
+                                <button *ngIf="letterHistory.length > 0"
+                                        (click)="clearSignedLetters()"
+                                        class="px-4 py-2 bg-navy-500 text-white rounded-lg hover:bg-navy-600 transition-colors">
+                                    Clear All
+                                </button>
+                            </div>
+
+                            <!-- Sentence management buttons -->
+                            <div class="flex justify-center gap-3 mt-3">
+                                <!-- Save sentence button -->
+                                <button (click)="saveSentence()"
+                                        [disabled]="!parsedSentence || parsedSentence.trim() === ''"
+                                        class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    💾 Save Sentence
+                                </button>
+
+                                <!-- Show saved sentences button -->
+                                <button (click)="toggleSavedSentences()"
+                                        class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                                    📋 View Saved
+                                    <span class="ml-2 bg-white text-purple-600 px-2 py-0.5 rounded-full text-sm">
+                                        {{savedSentencesCount}}
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
     </div>
     <!-- Fixed footer section at bottom of screen with shadow effect -->
-    <div class="bg-navy-10 w-full shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] bottom-0 fixed">
-    <!-- 
-        Commented out section - appears to be for file upload and text messaging functionality
-        This could be re-enabled if additional features are needed
-    -->
+    <div class="bg-navy-10 w-full shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] bottom-0 fixed p-3 text-center text-navy-600">
+        <p>Show hand signs in front of your camera to translate ASL to text</p>
+    </div>
+
+    <!-- Add some styles -->
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        .animate-modal-in {
+            animation: modalIn 0.3s ease-out;
+        }
+        .notification-slide-in {
+            animation: slideIn 0.3s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+
+    <!-- Notification toast -->
+    <div *ngIf="showNotification" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 notification-slide-in flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        {{ notificationMessage }}
+    </div>
+
+    <!-- Basic saved sentences modal -->
+    <div *ngIf="showSavedSentences" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-xl w-full animate-modal-in">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="text-xl font-bold text-navy-600">
+                    Saved Sentences
+                    <span class="text-sm bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full ml-2">
+                        {{savedSentencesCount}} items
+                    </span>
+                </h3>
+                <button (click)="toggleSavedSentences()" class="text-gray-500 hover:text-gray-700 p-1 rounded">
+                    &times;
+                </button>
+            </div>
+
+            <div class="overflow-y-auto max-h-[60vh]">
+                <!-- Debug info -->
+                <div class="mb-4 text-xs text-gray-400 border-b pb-2">
+                    Sentences loaded: {{savedSentences ? 'yes' : 'no'}} |
+                    Count: {{savedSentencesCount}} |
+                    Array length: {{savedSentences?.length || 0}}
+                </div>
+
+                <!-- Empty state -->
+                <div *ngIf="!savedSentences || savedSentences.length === 0" class="text-center py-8">
+                    <p class="text-gray-500">No saved sentences yet</p>
+                    <p class="text-sm text-gray-400 mt-2">Save a sentence to see it here</p>
+                </div>
+
+                <!-- Direct rendering of sentences -->
+                <div class="space-y-2">
+                    <div *ngFor="let sentence of savedSentences; let i = index"
+                         class="p-3 border rounded-md flex justify-between items-center">
+                        <span class="text-navy-600">{{i+1}}. {{sentence}}</span>
+                        <button (click)="deleteSavedSentence(i)" class="text-red-500 hover:bg-red-100 p-1 rounded">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t flex justify-between items-center">
+                <div>
+                    <button (click)="loadAllSavedSentences()" class="text-blue-500 hover:text-blue-600 mr-4">
+                        Refresh Data
+                    </button>
+                    <button *ngIf="savedSentencesCount > 0"
+                            (click)="clearStorage()"
+                            class="text-red-500 hover:text-red-600">
+                        Clear All
+                    </button>
+                </div>
+                <button (click)="toggleSavedSentences()" class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
     </div>
 </div>
