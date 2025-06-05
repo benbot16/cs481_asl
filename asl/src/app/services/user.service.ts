@@ -52,6 +52,7 @@ type UserData = {
   first: string | null,
   last: string | null,
   age: number | null,
+  messages: string | null,
 };
 
 
@@ -171,6 +172,7 @@ export class UserService {
       first: fname,
       last: lname,
       age: a,
+      messages: "",
     }
     if(!user || !fname || !lname || !a) {
       return false;
@@ -204,13 +206,26 @@ export class UserService {
       first: (fname?fname : doc_data!!["first"]),
       last: (lname?lname : doc_data!!["last"]),
       age: (a?a : doc_data!!["age"]),
+      messages: doc_data!!["messages"],
     }
     await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
     return true;
   }
 
-  // Delete a user's data
+  // Delete a user's data by zeroing it out
   async deleteData() {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+
+    const userData: UserData = {
+      first: "",
+      last: "",
+      age: 0,
+      messages: "",
+    }
+    await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
+    return true;
   }
 
   async getFirstName(): Promise<string> {
@@ -246,5 +261,31 @@ export class UserService {
     } else {
       return 0;
     }
+  }
+
+  async getSavedData(): Promise<string> {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+    if(doc_data) {
+      return doc_data["messages"];
+    } else {
+      return "";
+    }
+  }
+
+  async saveData(data: string) {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+
+    const userData: UserData = {
+      first: (doc_data!!["first"]),
+      last: (doc_data!!["last"]),
+      age: (doc_data!!["age"]),
+      messages: data,
+    }
+    await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
+    return true;
   }
 }

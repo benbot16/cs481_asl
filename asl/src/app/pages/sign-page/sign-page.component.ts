@@ -414,13 +414,19 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  // Update localStorage with saved sentences
+  // Update localStorage with saved sentences and upload to the cloud
   private updateLocalStorage(): void {
     try {
       const jsonData = JSON.stringify(this.savedSentences);
       localStorage.setItem(this.STORAGE_KEY, jsonData);
       console.log('Saved to localStorage:', jsonData);
       this.savedSentencesCount = this.savedSentences.length;
+
+      try{
+        this.userService.saveData(jsonData)
+      } catch(error) {
+        console.log("Error storing strings: ", error);
+      }
 
       // Verify storage was successful
       const verification = localStorage.getItem(this.STORAGE_KEY);
