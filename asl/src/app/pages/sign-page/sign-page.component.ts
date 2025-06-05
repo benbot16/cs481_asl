@@ -41,6 +41,8 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   savedSentences: string[] = [];
   // Storage key for localStorage - use a simple key name to avoid issues
   private readonly STORAGE_KEY = 'asl_sentences';
+  // Data version key for localStorage - used for DB purposes
+  private readonly VERSION_KEY = 'asl_storage_version'
   // Property to control saved sentences modal visibility
   showSavedSentences = false;
   // Property to track number of saved sentences
@@ -92,7 +94,26 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private initializeSavedSentences(): void {
     try {
       // Try to get data from localStorage
-      const savedData = localStorage.getItem(this.STORAGE_KEY);
+      console.log("Loading data...")
+      var savedData = localStorage.getItem(this.STORAGE_KEY);
+      var storageNum: number = parseInt(localStorage.getItem(this.VERSION_KEY)?localStorage.getItem(this.VERSION_KEY)!!:"0"!!);
+      if(!storageNum) {
+        storageNum = 0;
+      }
+
+      try {
+        var remoteNum = 0;
+        this.userService.getSavedVersion().then((result) => {
+          remoteNum = result;
+        });
+        if(storageNum < remoteNum) {
+          this.userService.getSavedData().then((result) => {
+            savedData = result;
+          });
+        }
+      } catch(error) {
+        console.log("Firebase data retrieval error: ", error)
+      }
 
       // Create some test data if needed for testing
       // localStorage.setItem(this.STORAGE_KEY, JSON.stringify(['Hello world', 'This is a test', 'ASL is fun']));
@@ -148,6 +169,7 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Load required scripts dynamically
   private async loadScripts(): Promise<void> {
+    console.log("Loading scripts...");
     return new Promise<void>((resolve) => {
       // Load TensorFlow.js core
       const tfCore = document.createElement('script');
@@ -205,10 +227,11 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
       this.customModel = await tf.loadLayersModel(
         "https://raw.githubusercontent.com/benbot16/cs481_asl/refs/heads/fb_web/asl/src/app/model1.json"
       );
-      console.log('Custom model loaded successfully');
     } catch (error) {
       console.error('Error loading custom model:', error);
+      return
     }
+    console.log('Custom model loaded successfully');
   }
 
   // Start the camera
@@ -428,11 +451,19 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       const jsonData = JSON.stringify(this.savedSentences);
+      // Update the version number and save the data
+      var version_num = parseInt((localStorage.getItem(this.VERSION_KEY)?localStorage.getItem(this.VERSION_KEY)!!:"0"!!));
+      if(!version_num) {
+        version_num = 0;
+      }
+      version_num++;
+      localStorage.setItem(this.VERSION_KEY, version_num.toString())
       localStorage.setItem(this.STORAGE_KEY, jsonData);
       this.savedSentencesCount = this.savedSentences.length;
 
+      // Save the data remotely
       try{
-        this.userService.saveData(jsonData)
+        this.userService.saveData(jsonData, version_num)
       } catch(error) {
         console.log("Error storing strings: ", error);
       }
@@ -471,7 +502,25 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Use a direct approach for simplicity and reliability
     try {
-      const data = localStorage.getItem(this.STORAGE_KEY);
+      var data = localStorage.getItem(this.STORAGE_KEY);
+      var storageNum: number = parseInt(localStorage.getItem(this.VERSION_KEY)?localStorage.getItem(this.VERSION_KEY)!!:"0"!!);
+      if(!storageNum) {
+        storageNum = 0;
+      }
+
+      try {
+        var remoteNum = 0;
+        this.userService.getSavedVersion().then((result) => {
+          remoteNum = result;
+        });
+        if(storageNum < remoteNum) {
+          this.userService.getSavedData().then((result) => {
+            data = result;
+          });
+        }
+      } catch(error) {
+        console.log("Firebase data retrieval error: ", error)
+      }
 
       // For immediate debugging
       console.log('Raw localStorage data:', data);

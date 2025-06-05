@@ -53,6 +53,7 @@ type UserData = {
   last: string | null,
   age: number | null,
   messages: string | null,
+  version: number
 };
 
 
@@ -173,6 +174,7 @@ export class UserService {
       last: lname,
       age: a,
       messages: "",
+      version: 0
     }
     if(!user || !fname || !lname || !a) {
       return false;
@@ -207,6 +209,7 @@ export class UserService {
       last: (lname?lname : doc_data!!["last"]),
       age: (a?a : doc_data!!["age"]),
       messages: doc_data!!["messages"],
+      version: doc_data!!["version"]
     }
     await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
     return true;
@@ -223,6 +226,7 @@ export class UserService {
       last: "",
       age: 0,
       messages: "",
+      version: 0
     }
     await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
     return true;
@@ -274,7 +278,18 @@ export class UserService {
     }
   }
 
-  async saveData(data: string) {
+  async getSavedVersion(): Promise<number> {
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+    if(doc_data) {
+      return doc_data["version"];
+    } else {
+      return -1;
+    }
+  }
+
+  async saveData(data: string, version: number) {
     const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
     const docu = await getDoc(docref);
     const doc_data = docu.data();
@@ -284,6 +299,7 @@ export class UserService {
       last: (doc_data!!["last"]),
       age: (doc_data!!["age"]),
       messages: data,
+      version: version
     }
     await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
     return true;
