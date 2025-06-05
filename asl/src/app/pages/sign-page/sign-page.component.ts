@@ -1,5 +1,5 @@
 // Import necessary Angular modules and components
-import { AsyncPipe, NgIf, NgClass } from '@angular/common';
+import { AsyncPipe, NgIf, NgClass, NgFor } from '@angular/common';
 import { Component, ElementRef, ViewChild, inject, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { DocumentData } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ declare const Camera: any;
   templateUrl: './sign-page.component.html', // Path to HTML template
   styleUrls: ['./sign-page.component.css'], // Path to CSS styles
   standalone: true, // Indicates this is a standalone component (Angular 14+)
-  imports: [AsyncPipe, FormsModule, NgIf, NgClass] // Required imports for template usage
+  imports: [AsyncPipe, FormsModule, NgIf, NgClass, NgFor] // Required imports for template usage
 })
 export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Inject the UserService for authentication and user data
@@ -39,11 +39,11 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   isCollectingLetters = false;
   // Property to store saved sentences
   savedSentences: string[] = [];
-  // Storage key for localStorage
-  private readonly STORAGE_KEY = 'ASL_SAVED_SENTENCES';
+  // Storage key for localStorage - use a simple key name to avoid issues
+  private readonly STORAGE_KEY = 'asl_sentences';
   // Property to control saved sentences modal visibility
   showSavedSentences = false;
-  // For debugging
+  // Property to track number of saved sentences
   savedSentencesCount = 0;
   // Property for notification display
   showNotification = false;
@@ -65,57 +65,67 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Lifecycle hook that runs when the component initializes
   async ngOnInit() {
-    console.log('SignPageComponent initializing');
+    console.log('Sign page component initializing');
 
-    // Initialize saved sentences
+    // Load saved sentences first thing to ensure they're available
     this.initializeSavedSentences();
 
-    // Load required scripts dynamically
-    await this.loadScripts();
+    // Initialize model and tracking after sentences are loaded
+    try {
+      // Load required scripts dynamically
+      await this.loadScripts();
 
-    // Initialize MediaPipe Hands
-    this.initializeHandTracking();
+      // Initialize MediaPipe Hands
+      this.initializeHandTracking();
 
-    // Load the custom TensorFlow.js model
-    this.loadModel();
+      // Load the custom TensorFlow.js model
+      this.loadModel();
+    } catch (error) {
+      console.error('Error initializing component:', error);
+    }
+
+    // Double-check sentences loaded correctly
+    console.log(`Initialization complete. Saved sentences: ${this.savedSentences.length}`);
   }
 
   // Initialize saved sentences from localStorage
   private initializeSavedSentences(): void {
     try {
-      console.log('Initializing saved sentences');
-      this.savedSentences = []; // Ensure it starts empty
-
+      // Try to get data from localStorage
       const savedData = localStorage.getItem(this.STORAGE_KEY);
-      console.log('Raw data from localStorage:', savedData);
 
-      if (savedData && savedData.trim() !== '') {
-        const parsedData = JSON.parse(savedData);
-        console.log('Parsed data type:', typeof parsedData, Array.isArray(parsedData));
+      // Create some test data if needed for testing
+      // localStorage.setItem(this.STORAGE_KEY, JSON.stringify(['Hello world', 'This is a test', 'ASL is fun']));
 
-        if (Array.isArray(parsedData)) {
-          // Create a fresh array to ensure change detection
-          this.savedSentences = [...parsedData];
-          this.savedSentencesCount = this.savedSentences.length;
-          console.log('🟢 Successfully loaded saved sentences:', this.savedSentences);
-          console.log('Individual sentences:');
-          this.savedSentences.forEach((s, i) => console.log(`  ${i+1}. "${s}"`));
-        } else {
-          console.warn('❌ Stored data is not an array, resetting to empty array');
+      if (savedData) {
+        try {
+          const parsed = JSON.parse(savedData);
+          if (Array.isArray(parsed)) {
+            // Creating a new array reference is important for Angular's change detection
+            this.savedSentences = [...parsed];
+            this.savedSentencesCount = this.savedSentences.length;
+            console.log(`Loaded ${this.savedSentences.length} saved sentences`);
+          } else {
+            // Reset if not an array
+            this.savedSentences = [];
+            this.savedSentencesCount = 0;
+          }
+        } catch (parseError) {
+          // Handle JSON parsing errors
+          console.error('Invalid saved sentences data:', parseError);
           this.savedSentences = [];
           this.savedSentencesCount = 0;
         }
       } else {
-        console.log('ℹ️ No saved sentences found in localStorage');
+        // No data found
         this.savedSentences = [];
         this.savedSentencesCount = 0;
       }
     } catch (error) {
-      console.error('❌ Error loading saved sentences:', error);
+      // Handle any other errors
+      console.error('Error loading saved sentences:', error);
       this.savedSentences = [];
       this.savedSentencesCount = 0;
-      // Reset corrupted storage
-      localStorage.removeItem(this.STORAGE_KEY);
     }
   }
 
@@ -395,8 +405,6 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Save the current sentence to the saved sentences list
   saveSentence(): void {
     if (this.parsedSentence && this.parsedSentence.trim() !== '') {
-      console.log('Saving sentence:', this.parsedSentence);
-
       // Add the current sentence to the saved sentences array
       this.savedSentences = [...this.savedSentences, this.parsedSentence];
 
@@ -408,26 +416,23 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
       // Show notification
       this.showNotificationMessage('Sentence saved successfully!');
-
-      console.log('Updated saved sentences:', this.savedSentences);
-      console.log('Total saved sentences:', this.savedSentences.length);
     }
   }
 
   // Update localStorage with saved sentences
   private updateLocalStorage(): void {
     try {
+      // Ensure we're storing a valid array
+      if (!Array.isArray(this.savedSentences)) {
+        this.savedSentences = [];
+      }
+
       const jsonData = JSON.stringify(this.savedSentences);
       localStorage.setItem(this.STORAGE_KEY, jsonData);
-      console.log('Saved to localStorage:', jsonData);
       this.savedSentencesCount = this.savedSentences.length;
 
-      // Verify storage was successful
-      const verification = localStorage.getItem(this.STORAGE_KEY);
-      console.log('Verification from localStorage:', verification);
-      if (verification !== jsonData) {
-        console.warn('⚠️ Storage verification failed - stored data doesn\'t match what we tried to save');
-      }
+      // Verify storage worked correctly
+      console.log(`Saved ${this.savedSentences.length} sentences to localStorage`);
     } catch (error) {
       console.error('Error saving to localStorage:', error);
     }
@@ -435,51 +440,41 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Toggle the saved sentences modal
   toggleSavedSentences(): void {
-    // Always reload from localStorage when opening modal
+    // If we're opening the modal, reload the sentences to ensure freshness
     if (!this.showSavedSentences) {
-      console.log('Opening saved sentences modal - reloading data');
+      console.log('Opening saved sentences modal');
       this.loadAllSavedSentences();
+      this.showSavedSentences = true;
+    } else {
+      // Just close the modal
+      this.showSavedSentences = false;
     }
 
-    this.showSavedSentences = !this.showSavedSentences;
-    console.log('Showing saved sentences modal:', this.showSavedSentences);
-    if (this.showSavedSentences) {
-      console.log('Current saved sentences array:', JSON.stringify(this.savedSentences));
-      console.log('Count:', this.savedSentences.length);
-
-      // Log each sentence for debugging
-      if (this.savedSentences && this.savedSentences.length > 0) {
-        console.log('Individual saved sentences:');
-        this.savedSentences.forEach((sentence, index) => {
-          console.log(`  ${index+1}: "${sentence}"`);
-        });
-      } else {
-        console.log('No saved sentences to display');
-      }
-    }
+    console.log(`Modal open: ${this.showSavedSentences}, Sentences count: ${this.savedSentencesCount}`);
   }
 
   // Load all saved sentences - can be called anytime to refresh data
   loadAllSavedSentences(): void {
-    try {
-      const savedData = localStorage.getItem(this.STORAGE_KEY);
-      console.log('Loading saved sentences, raw data:', savedData);
+    console.log('Loading saved sentences from storage');
 
-      if (savedData && savedData.trim() !== '') {
-        try {
-          const parsedData = JSON.parse(savedData);
-          if (Array.isArray(parsedData)) {
-            console.log('Loaded array data:', parsedData);
-            // Force creation of new array reference for Angular change detection
-            this.savedSentences = [...parsedData];
-            this.savedSentencesCount = this.savedSentences.length;
-          } else {
-            console.warn('Saved data is not an array');
-            this.savedSentences = [];
-            this.savedSentencesCount = 0;
-          }
-        } catch (parseError) {
-          console.error('Error parsing saved sentences:', parseError);
+    // Use a direct approach for simplicity and reliability
+    try {
+      const data = localStorage.getItem(this.STORAGE_KEY);
+
+      // For immediate debugging
+      console.log('Raw localStorage data:', data);
+
+      if (data) {
+        const parsed = JSON.parse(data);
+        console.log('Parsed data:', parsed);
+
+        if (Array.isArray(parsed)) {
+          // This creates a new array reference which helps Angular detect the change
+          this.savedSentences = [...parsed];
+          this.savedSentencesCount = this.savedSentences.length;
+          console.log(`Successfully loaded ${this.savedSentences.length} sentences`);
+        } else {
+          console.warn('Data is not an array, resetting');
           this.savedSentences = [];
           this.savedSentencesCount = 0;
         }
@@ -489,7 +484,7 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
         this.savedSentencesCount = 0;
       }
     } catch (error) {
-      console.error('Error loading saved sentences:', error);
+      console.error('Failed to load saved sentences:', error);
       this.savedSentences = [];
       this.savedSentencesCount = 0;
     }
@@ -497,8 +492,6 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Delete a saved sentence
   deleteSavedSentence(index: number): void {
-    console.log('Deleting sentence at index:', index);
-
     if (index >= 0 && index < this.savedSentences.length) {
       // Remove the sentence at the specified index
       const updatedSentences = [...this.savedSentences];
@@ -510,8 +503,6 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
       // Show notification
       this.showNotificationMessage('Sentence deleted');
-
-      console.log('Sentence deleted. Remaining:', this.savedSentences.length);
     } else {
       console.error('Invalid index for deletion:', index);
     }
@@ -519,7 +510,6 @@ export class SignPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Clear all saved sentences
   clearStorage(): void {
-    console.log('Clearing all saved sentences');
     this.savedSentences = [];
     this.savedSentencesCount = 0;
     localStorage.removeItem(this.STORAGE_KEY);
