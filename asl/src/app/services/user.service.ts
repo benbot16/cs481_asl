@@ -196,10 +196,14 @@ export class UserService {
       await updateEmail(this.auth.currentUser!!, email).catch((err) => console.log("Error updating email: ", err));
     }
 
+    const docref = doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid);
+    const docu = await getDoc(docref);
+    const doc_data = docu.data();
+
     const userData: UserData = {
-      first: fname,
-      last: lname,
-      age: a,
+      first: (fname?fname : doc_data!!["first"]),
+      last: (lname?lname : doc_data!!["last"]),
+      age: (a?a : doc_data!!["age"]),
     }
     await setDoc(doc(this.firestore, "user_profiles", this.auth.currentUser!!.uid), userData);
     return true;
