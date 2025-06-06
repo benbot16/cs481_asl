@@ -1,0 +1,61 @@
+<div class="min-h-[80vh] h-full w-full py-10 flex flex-wrap flex-col-reverse sm:flex-row items-center min-w-screen">
+    <div class="min-w-screen sm:w-[100%] flex flex-col gap-5 items-center h-full gap-5">
+        <div>
+            <span class="text-navy-600 text-5xl font-light mt-5">User Profile</span>
+        </div>
+        <form [formGroup]="profileForm" (ngSubmit)="modifyProfile()">
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2">
+        @if(editing){
+        <input class="grow {{(fname?.invalid && (fname?.dirty || fname?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="fname" placeholder="First Name: {{this.first_name}}" />
+        }@else{
+          First Name: {{this.first_name ? this.first_name : "Unset"}}
+        }
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 ">
+          @if(editing){
+        <input class="grow {{(lname?.invalid && (lname?.dirty || lname?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="lname" placeholder="Last Name: {{this.last_name}}" />
+          }@else{
+            Last Name: {{this.last_name ? this.last_name : "Unset"}}
+          }
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 ">
+          @if(editing){
+        <input class="grow {{(age?.invalid && (age?.dirty || age?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="text" formControlName="age" placeholder="Age: {{this.age_a}}" />
+          }@else{
+        Age: {{this.age_a > 0 ? this.age_a : "Unset"}}
+          }
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(editing && email?.invalid && (email?.dirty || email?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          @if(editing) {
+        <input class="grow {{(email?.invalid && (email?.dirty || email?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="email" formControlName="email" placeholder="Email Address: {{this.userService.currentUser?.email}}" />
+        }@else{
+          Email Address: {{this.userService.currentUser?.email}}
+        }
+          </p>
+          @if(editing){
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(editing && (password?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input class="grow {{((password?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}" type="password" formControlName="password" placeholder="Password" title="Your password must be at least 10 characters long and contain at least one of the following: An uppercase letter, a lowercase letter, and a number."/>
+          </p>
+          <p class="transition-all w-[400px] shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2 {{(editing && (confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}">
+          <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="grow {{((confirmPassword?.invalid || confirmPassword?.value != password?.value) && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'bg-red-100' : 'bg-white'}}" title=" Your password must be at least 10 characters long and contain at least one of the following: An uppercase letter, a lowercase letter, and a number."/>
+          </p>
+          }
+          @if(!editing){
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" (click)="edit(true)">
+        <span class="text-slate-700 text-xl flex-grow">Edit</span>
+          </button>
+          }@else{
+
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2" type="submit" >
+          <span class="text-slate-700 text-xl flex-grow">Confirm</span>
+          </button>
+          <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between mb-2" (click)="edit(false)" >
+          <span class="text-slate-700 text-xl flex-grow">Cancel</span>
+          </button>
+
+          }
+
+        </form>
+
+    </div>
+</div>
